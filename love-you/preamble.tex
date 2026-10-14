@@ -15,6 +15,19 @@
 % \renewcommand{\todo}[1]{#1}
 
 %%
+%% Battute numerate per sezione, stile teorema: "Joke 1.1: ..."
+%%
+\newcounter{joke}[section]
+\renewcommand{\thejoke}{\thesection.\arabic{joke}}
+\newenvironment{joke}{\par\refstepcounter{joke}\noindent\textbf{Joke~\thejoke:}\ \itshape\ignorespaces}
+  {\par\global\everypar{{\setbox0\lastbox}\global\everypar{}}} % a capo senza rientro: il testo dopo continua come stesso paragrafo
+%%
+%% disable for camera ready / submission by uncommenting these lines
+%%
+% \usepackage{comment}
+% \excludecomment{joke}
+
+%%
 %% work harder in optimizing text layout. Typically shrinks text by 1/6 of page, enable
 %% it at the very end of the writing process, when you are just above the page limit
 %%
