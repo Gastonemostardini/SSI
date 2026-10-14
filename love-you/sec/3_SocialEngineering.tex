@@ -16,16 +16,18 @@ Si provi ad immaginare ora la sorpresa di ricevere attenzioni amorose inaspettat
 Questo sarebbe un fortissimo incentivo a controllare il contenuto, a causa della natura curiosa dell'essere umano. 
 
 \subsection{Falsa sicurezza}
-Difatti le email venivano ricevute da persone, precedentemente infettate, che avevano l'indirizzo email della vittima sul proprio ``Outlook address book''; 
+Le email venivano ricevute da persone, precedentemente infettate, che avevano l'indirizzo email della vittima sul proprio ``Outlook address book''; 
 si suppone dunque che i mittenti avessero un certo grado di confidenza con la vittima.
-Più il mittente era fidato più aumentavano le possibilità del file di essere aperto.
+Più il mittente era fidato più aumentavano le possibilità del file di essere aperto e dunque del worm di diffondersi.
 
-Questo meccanismo trova riscontro nei principi di persuasione descritti da Cialdini~\cite{cialdini1984influence}.
-Il primo è la \emph{simpatia} (\emph{liking}): si è più propensi ad assecondare le richieste di chi si conosce e si apprezza, e un messaggio proveniente da un collega o da un amico viene valutato con molta meno diffidenza di uno proveniente da uno sconosciuto.
-Il secondo è la \emph{riprova sociale}: quando non si è sicuri di come comportarsi si tende a imitare ciò che fanno gli altri. Si innescava così un effetto a catena: ogni vittima, una volta infettata, diventava a sua volta un mittente fidato per tutti i propri contatti.
+Questo meccanismo trova riscontro nei principi di persuasione descritti da Robert Cialdini~\cite{cialdini1984influence}.
+\begin{description}
+  \item{Simpatia:} si è più propensi ad assecondare le richieste di chi si conosce e si apprezza, e un messaggio proveniente da un collega o da un amico viene valutato con molta meno diffidenza di uno proveniente da uno sconosciuto.
+  \item{Riprova sociale:} quando non si è sicuri di come comportarsi si tende a imitare ciò che fanno gli altri. Si innescava in più un fattore di curiosità ulteriore nel caso si ricevesse l'email da più soggetti.
+\end{description}
 
-Il worm non aveva bisogno di conquistare la fiducia di ogni nuovo bersaglio, perché la ereditava da chi lo aveva preceduto.
-A moltiplicare il contagio c'è dunque la rete di rapporti di fiducia personali e professionali tra le vittime.
+Il worm conquistava fiducia ad ogni nuovo bersaglio, perché la ereditava i rapporti interpersonali da chi lo aveva preceduto.
+A moltiplicare il contagio c'è dunque la rete di conescenze e fiducia personali e professionali tra le vittime.
 
 \subsection{Errore umano nella lettura del file}
 Chiunque conosce l'estensione ``.txt'' e praticamente tutti la considerano non malevola.
@@ -34,7 +36,7 @@ Il malware utilizzava una feature di Windows attiva di default che nascondeva l'
 Accadeva dunque che un file nominato ``LOVE-LETTER-FOR-YOU.TXT.vbs'' venisse visualizzato come ``LOVE-LETTER-FOR-YOU.TXT'', rafforzando l'idea che si trattasse di una innocua lettera d'amore.
 
 L'unico indizio rimasto era l'icona: come si vede in \cref{fig:icone}, il file malevolo mostrava l'icona della pergamena tipica degli script di Windows, ben diversa da quella di un normale documento di testo.
-Pochi utenti però conoscevano questa differenza, e ancora meno vi prestavano attenzione.
+Purtroppo pochi utenti notavano questa differenza, e ancora meno ne conoscevano il significato.
 
 \begin{figure}[t]
   \centering
