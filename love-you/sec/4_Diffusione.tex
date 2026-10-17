@@ -1,0 +1,35 @@
+\section{Diffusione dell'attacco}
+
+\subsection{Diffusione iniziale}
+
+ILOVEYOU inizialmente era stato progettato per funzionare solo a Manila. In seguito questa limitazione fu rimossa, permettendo al worm di diffondersi in tutto il mondo \cite{white2020}. Le prime segnalazioni ai produttori di antivirus risalgono alla mattina del 4 maggio 2000 \cite{whalen2000}. Seguendo i fusi orari, il worm si spostò verso ovest attraverso i sistemi di posta aziendali, mentre i dipendenti iniziavano la giornata lavorativa e aprivano la posta: raggiunse prima Hong Kong, poi l'Europa e infine gli Stati Uniti.
+
+Il messaggio sembrava provenire da una persona conosciuta, perché il worm si inviava a tutti i contatti della rubrica di Outlook della vittima e teneva traccia dei destinatari già raggiunti, così da non inviare più copie allo stesso contatto.
+
+Una volta eseguito, tentava anche di scaricare un trojan, \texttt{WIN-BUGSFIX.exe}, impostando la pagina iniziale di Internet Explorer su un indirizzo che lo distribuiva. Se il download riusciva, il trojan veniva eseguito al riavvio e la pagina iniziale veniva reimpostata su una pagina vuota; il suo scopo era rubare password.
+
+\subsection{Diffusione in enti governativi e aziende}
+
+Il worm paralizzò la posta elettronica di molte organizzazioni, che in diversi casi dovettero spegnere i server per il volume di messaggi generato. Secondo il rapporto del GAO \cite{gao2000iloveyou}, furono colpiti, tra gli altri:
+
+\begin{itemize}
+    \item In Belgio, il sistema bancario nazionale;
+    \item Nel Regno Unito, i server di posta della \textit{House of Commons}, spenti per due ore;
+    \item Negli Stati Uniti, la maggior parte delle agenzie federali, tra cui il \textit{Dipartimento di Giustizia}, il \textit{Dipartimento del Lavoro} e la \textit{Social Security Administration}. Furono interessate anche le attività della \textit{CIA} e del \textit{Dipartimento della Difesa}, e alcuni file della \textit{NASA} furono danneggiati al punto da non poter essere recuperati nemmeno dai backup.
+\end{itemize}
+
+Alcuni dati danno la misura dell'impatto: la \textit{Veterans Health Administration} ricevette circa 7 milioni di email del worm, richiedendo 240 ore di lavoro per risolvere i problemi \cite{gao2000iloveyou}.
+
+\subsection{Dispositivi colpiti e danni}
+
+Le prime stime, riportate da Whalen \cite{whalen2000}, parlavano di almeno 650 siti e oltre 500.000 sistemi coinvolti. Dopo circa dieci giorni dai primi casi si stimò che il worm avesse infettato circa \textbf{50 milioni} di computer, pari a circa il \textbf{10\%} di quelli connessi a Internet \cite{winder2020}.
+
+Il bersaglio erano i sistemi Windows. I sistemi Mac e UNIX non potevano eseguire lo script, ma potevano comunque contribuire alla diffusione inoltrando un file infetto ad altri utenti \cite{whalen2000}.
+
+\subsection{Rimozione}
+
+Rimuovere ILOVEYOU richiese più di una semplice cancellazione del file ricevuto. Il worm aveva copie su disco, voci nel registro di sistema e file dell'utente sovrascritti, quindi serviva uno strumento dedicato per eliminare il codice e ripristinare le impostazioni originali \cite{whalen2000}. Tra le aziende che rilasciarono strumenti di rimozione e aggiornamenti delle firme si trovano \textbf{McAfee}, \textbf{F-Secure}, \textbf{Symantec}, \textbf{Sophos} e \textbf{Trend Micro}. Per cambiare il comportamento degli antivirus, che dovettero distribuire gli aggiornamenti molto più rapidamente del solito \cite{ebsco2023}.
+
+Nel frattempo gli amministratori adottarono misure di contenimento: il CERT/CC consigliò di filtrare sui server di posta i messaggi con oggetto ``ILOVEYOU'' e di bloccare gli allegati \texttt{.vbs} \cite{cert2000}. Anche i fornitori di accesso a Internet intervennero: il provider filippino Sky Internet rimosse le pagine che distribuivano il trojan \texttt{WIN-BUGSFIX.exe}.
+
+La parte più difficile fu il recupero dei dati. Poiché il worm sovrascriveva immagini, documenti e script con copie di sé stesso, i file originali andavano ripristinati da backup, e in alcuni casi, come alla NASA, nemmeno questo fu possibile. Per questo la maggior parte del costo complessivo fu dovuta ai giorni di lavoro dei tecnici, più che al software di rimozione.
