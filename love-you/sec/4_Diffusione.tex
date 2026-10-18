@@ -2,28 +2,28 @@
 
 \subsection{Diffusione iniziale}\label{subsec:diffusioneIniziale}
 
-ILOVEYOU era stato inizialmente progettato per funzionare solo a Manila; questa limitazione fu poi rimossa, permettendo al worm di diffondersi in tutto il mondo \cite{white2020}. Le prime segnalazioni ai produttori di antivirus risalgono alla mattina del 4 maggio 2000 \cite{whalen2000}. Seguendo i fusi orari, il worm si spostò verso ovest man mano che i dipendenti iniziavano la giornata e aprivano la posta: prima Hong Kong nel pomeriggio, poi l'Europa, dove era mattina, e infine gli Stati Uniti al risveglio \cite{gao2000iloveyou,bbc2000loveyou,guardian2000lovebug}.
+ILOVEYOU era stato inizialmente progettato per funzionare solo a Manila; questa limitazione fu poi rimossa, permettendo al worm di diffondersi in tutto il mondo \cite{white2020}. Le prime segnalazioni arrivarono da Hong Kong il 4 maggio 2000; da lì, seguendo i fusi orari, il worm si spostò verso ovest man mano che i dipendenti iniziavano la giornata e aprivano la posta: quando a Hong Kong erano le 15, in Europa erano le 9, e poco dopo toccò agli Stati Uniti \cite{gao2000iloveyou,cnn2000}.
 
 \subsection{Diffusione in enti governativi e aziende}
 
-Il worm paralizzò la posta elettronica di molte organizzazioni, che in diversi casi dovettero spegnere i server per il volume di messaggi. Secondo il rapporto del GAO \cite{gao2000iloveyou}, furono colpiti, tra gli altri:
+Il worm paralizzò la posta elettronica di molte organizzazioni, che in diversi casi dovettero spegnere i server per il volume di messaggi. Furono colpiti, tra gli altri:
 
 \begin{itemize}
-    \item in Belgio, il sistema bancario nazionale;
-    \item nel Regno Unito, i server di posta della \textit{House of Commons}, spenti per due ore;
-    \item negli Stati Uniti, la maggior parte delle agenzie federali, tra cui il \textit{Dipartimento di Giustizia}, il \textit{Dipartimento del Lavoro} e la \textit{Social Security Administration}, oltre a \textit{CIA} e \textit{Dipartimento della Difesa}; alcuni file della \textit{NASA} non furono recuperabili nemmeno dai backup.
+    \item in Belgio, il sistema bancario nazionale~\cite{gao2000iloveyou};
+    \item nel Regno Unito, la posta della \textit{House of Commons}~\cite{bbc2000loveyou};
+    \item negli Stati Uniti, la maggior parte delle agenzie federali, tra cui il \textit{Dipartimento di Giustizia}, il \textit{Dipartimento del Lavoro} e la \textit{Social Security Administration}, oltre a \textit{CIA} e \textit{Dipartimento della Difesa}; alcuni file della \textit{NASA} non furono recuperabili nemmeno dai backup~\cite{gao2000iloveyou,gao2000rhodes}.
 \end{itemize}
 
-La sola \textit{Veterans Health Administration} ricevette circa 7 milioni di email del worm, e servirono 240 ore di lavoro per risolvere i problemi \cite{gao2000iloveyou}.
+La sola \textit{Veterans Health Administration} ricevette circa 7 milioni di email del worm, e servirono circa 240 ore-uomo di lavoro per risolvere i problemi \cite{gao2000iloveyou}.
 
 \subsection{Dispositivi colpiti e danni}
 
-Le prime stime, riportate da Whalen \cite{whalen2000}, parlavano di almeno 650 siti e oltre 500.000 sistemi coinvolti. Dopo circa dieci giorni si stimò che il worm avesse infettato circa \textbf{50 milioni} di computer, circa il \textbf{10\%} di quelli connessi a Internet \cite{winder2020}.
+All'8 maggio il CERT/CC contava segnalazioni da oltre 650 siti, per più di 500.000 sistemi coinvolti \cite{cert2000}. Le stime successive parlano di circa \textbf{45 milioni} di PC Windows colpiti tra il 4 e il 5 maggio \cite{bbc2010}.
 
-Il bersaglio erano i sistemi Windows: Mac e UNIX non potevano eseguire lo script, ma potevano comunque inoltrare, manualmente o tramite inoltri automatici, il file infetto ad altri utenti \cite{whalen2000}.
+Il bersaglio erano i sistemi Windows: Mac e UNIX non potevano eseguire lo script, ma potevano comunque inoltrare, manualmente o tramite inoltri automatici, il file infetto ad altri utenti \cite{bishop2000}.
 
 \subsection{Rimozione}
 
-Non bastava cancellare il file ricevuto: il worm si era copiato nel sistema e registrato all'avvio (Sezione~\ref{subsec:fase1}), quindi serviva uno strumento dedicato \cite{whalen2000}. Strumenti di rimozione e aggiornamenti delle firme furono rilasciati, tra gli altri, da \textbf{McAfee}, \textbf{F-Secure}, \textbf{Symantec}, \textbf{Sophos} e \textbf{Trend Micro}, che dovettero distribuirli molto più rapidamente del solito \cite{ebsco2023}.
+Non bastava cancellare il file ricevuto: il worm si era copiato nel sistema e registrato all'avvio (Sezione~\ref{subsec:fase1}), quindi serviva uno strumento dedicato \cite{markoff2000}. Strumenti di rimozione e aggiornamenti delle firme furono rilasciati, tra gli altri, da \textbf{McAfee}, \textbf{F-Secure}, \textbf{Symantec}, \textbf{Sophos} e \textbf{Trend Micro} \cite{cert2000}.
 
 La parte più difficile fu il recupero dei file sovrascritti (Sezione~\ref{subsec:fase3}) da backup, quando disponibili: la maggior parte del costo complessivo fu dovuta ai giorni di lavoro dei tecnici, più che al software di rimozione.

@@ -2,7 +2,7 @@
 
 \subsection{Che tipo di programma era}
 
-ILOVEYOU era uno \textbf{script} di circa 300 righe, scritto in \textbf{VBScript}: un file di testo con una lista di istruzioni, che Windows esegue tramite \textbf{Windows Script Host}, attivo di default su Windows 98, Me e 2000. Bastava un doppio clic sul file.
+ILOVEYOU era uno \textbf{script} scritto in \textbf{VBScript}: un file di testo con una lista di istruzioni, che Windows esegue tramite \textbf{Windows Script Host}, attivo di default su Windows 98, Me e 2000. Bastava un doppio clic sul file~\cite{bishop2000}.
 
 Usava in modo malevolo strumenti normali del sistema: la gestione dei file, il registro di configurazione e Outlook. Per questo gli antivirus dell'epoca, che riconoscevano i programmi dannosi da ``impronte'' già note, lo individuarono in ritardo.
 
@@ -10,9 +10,9 @@ Il codice era diviso in piccole funzioni (copiarsi, registrarsi all'avvio, spedi
 
 \subsection{Fase 1: copiarsi e restare nel sistema}\label{subsec:fase1}
 
-Appena eseguito, lo script salvava copie di sé nelle cartelle di sistema, con nomi simili a quelli di file veri come \texttt{MSKernel32.vbs} e \texttt{Win32DLL.vbs}, perché l'utente non li eliminasse.
+Appena eseguito, lo script salvava copie di sé nelle cartelle di sistema, con nomi simili a quelli di file veri come \texttt{MSKernel32.vbs} e \texttt{Win32DLL.vbs}, perché l'utente non li eliminasse~\cite{bishop2000}.
 
-Poi aggiungeva delle voci nelle chiavi \texttt{Run} e \texttt{RunServices} del \textbf{registro di sistema}, che elencano i programmi da avviare all'accensione. Così il worm ripartiva a ogni riavvio, anche dopo la cancellazione dell'allegato originale.
+Poi aggiungeva delle voci nelle chiavi \texttt{Run} e \texttt{RunServices} del \textbf{registro di sistema}, che elencano i programmi da avviare all'accensione. Così il worm ripartiva a ogni riavvio, anche dopo la cancellazione dell'allegato originale~\cite{cert2000}.
 
 \subsection{Fase 2: diffondersi}\label{subsec:fase2}
 
@@ -24,13 +24,13 @@ Outlook permetteva ad altri programmi di usarlo tramite l'interfaccia \textbf{CO
     \item inviarlo dall'account della vittima.
 \end{enumerate}
 
-Per ogni indirizzo raggiunto il worm scriveva una voce nel registro, così da non spedire due volte lo stesso messaggio alla stessa persona.
+Per ogni indirizzo raggiunto il worm scriveva una voce nel registro, così da non spedire due volte lo stesso messaggio alla stessa persona~\cite{bishop2000}.
 
-Se sul computer c'era \textbf{mIRC}, un programma di chat molto diffuso, il worm modificava il suo file \texttt{script.ini} e creava una pagina \texttt{LOVE-LETTER-FOR-YOU.HTM} con il proprio codice: chiunque entrasse in un canale con la vittima riceveva automaticamente il file.
+Se sul computer c'era \textbf{mIRC}, un programma di chat molto diffuso, il worm modificava il suo file \texttt{script.ini} e creava una pagina \texttt{LOVE-LETTER-FOR-YOU.HTM} con il proprio codice: chiunque entrasse in un canale con la vittima riceveva automaticamente il file~\cite{cert2000}.
 
 \subsection{Fase 3: danneggiare i file}\label{subsec:fase3}
 
-Lo script scorreva tutte le unità, comprese quelle condivise in rete, trattando i file in base all'estensione:
+Lo script scorreva tutte le unità, comprese quelle condivise in rete, trattando i file in base all'estensione~\cite{bishop2000}:
 
 \begin{itemize}
     \item \textbf{script e pagine web} (\texttt{.vbs}, \texttt{.js}, \texttt{.css}, \texttt{.hta}): contenuto sostituito con il codice del worm, quindi perso;
@@ -42,9 +42,9 @@ Bastava quindi un solo computer infetto per danneggiare le cartelle condivise di
 
 \subsection{Fase 4: scaricare un programma per rubare le password}
 
-Lo script cambiava la \textbf{pagina iniziale} di Internet Explorer con un indirizzo da cui, alla successiva apertura del browser, veniva scaricato \texttt{WIN-BUGSFIX.exe}, impostato poi per l'avvio automatico. Era un \textbf{password stealer}: raccoglieva le password salvate e le inviava all'autore.
+Lo script cambiava la \textbf{pagina iniziale} di Internet Explorer con un indirizzo da cui, alla successiva apertura del browser, veniva scaricato \texttt{WIN-BUGSFIX.exe}, impostato poi per l'avvio automatico. Era un \textbf{password stealer}: raccoglieva le password salvate e le inviava all'autore~\cite{bishop2000}.
 
-Dopo il download la pagina iniziale veniva reimpostata su una pagina vuota, per cancellare le tracce. L'impatto fu limitato, perché le pagine che distribuivano il file, ospitate dal provider filippino Sky Internet, furono rimosse in poco tempo.
+Dopo il download la pagina iniziale veniva reimpostata su una pagina vuota, per cancellare le tracce. L'impatto fu limitato, perché le pagine che distribuivano il file, ospitate dal provider filippino Sky Internet, furono rimosse in poco tempo~\cite{markoff2000}.
 
 \subsection{Perché funzionò}
 
