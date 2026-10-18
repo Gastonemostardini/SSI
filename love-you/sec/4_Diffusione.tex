@@ -1,12 +1,8 @@
-\section{Diffusione dell'attacco}
+\section{Diffusione dell'attacco}\label{sec:Diffusione}
 
-\subsection{Diffusione iniziale}
+\subsection{Diffusione iniziale}\label{subsec:diffusioneIniziale}
 
-ILOVEYOU inizialmente era stato progettato per funzionare solo a Manila. In seguito questa limitazione fu rimossa, permettendo al worm di diffondersi in tutto il mondo \cite{white2020}. Le prime segnalazioni ai produttori di antivirus risalgono alla mattina del 4 maggio 2000 \cite{whalen2000}. Seguendo i fusi orari, il worm si spostò verso ovest attraverso i sistemi di posta aziendali, mentre i dipendenti iniziavano la giornata lavorativa e aprivano la posta: raggiunse prima Hong Kong, poi l'Europa e infine gli Stati Uniti.
-
-Il messaggio sembrava provenire da una persona conosciuta, perché il worm si inviava a tutti i contatti della rubrica di Outlook della vittima e teneva traccia dei destinatari già raggiunti, così da non inviare più copie allo stesso contatto.
-
-Una volta eseguito, tentava anche di scaricare un trojan, \texttt{WIN-BUGSFIX.exe}, impostando la pagina iniziale di Internet Explorer su un indirizzo che lo distribuiva. Se il download riusciva, il trojan veniva eseguito al riavvio e la pagina iniziale veniva reimpostata su una pagina vuota; il suo scopo era rubare password.
+ILOVEYOU inizialmente era stato progettato per funzionare solo a Manila. In seguito questa limitazione fu rimossa, permettendo al worm di diffondersi in tutto il mondo \cite{white2020}. Le prime segnalazioni ai produttori di antivirus risalgono alla mattina del 4 maggio 2000 \cite{whalen2000}. Seguendo i fusi orari, il worm si spostò verso ovest attraverso i sistemi di posta aziendali, mentre i dipendenti iniziavano la giornata lavorativa e aprivano la posta: raggiunse prima Hong Kong nel pomeriggio, poi l'Europa, dove era mattina, e infine gli Stati Uniti al risveglio \cite{gao2000iloveyou,bbc2000loveyou,guardian2000lovebug}. Ogni nuovo messaggio sembrava provenire da una persona conosciuta, perché il worm si inviava ai contatti della rubrica della vittima (Sezione~\ref{subsec:fase2}).
 
 \subsection{Diffusione in enti governativi e aziende}
 
@@ -28,8 +24,8 @@ Il bersaglio erano i sistemi Windows. I sistemi Mac e UNIX non potevano eseguire
 
 \subsection{Rimozione}
 
-Rimuovere ILOVEYOU richiese più di una semplice cancellazione del file ricevuto. Il worm aveva copie su disco, voci nel registro di sistema e file dell'utente sovrascritti, quindi serviva uno strumento dedicato per eliminare il codice e ripristinare le impostazioni originali \cite{whalen2000}. Tra le aziende che rilasciarono strumenti di rimozione e aggiornamenti delle firme si trovano \textbf{McAfee}, \textbf{F-Secure}, \textbf{Symantec}, \textbf{Sophos} e \textbf{Trend Micro}. L'episodio cambiò anche il comportamento dei produttori di antivirus, che dovettero distribuire gli aggiornamenti molto più rapidamente del solito \cite{ebsco2023}.
+Rimuovere ILOVEYOU richiese più di una semplice cancellazione del file ricevuto: il worm si era copiato nel sistema e registrato all'avvio (Sezione~\ref{subsec:fase1}), quindi serviva uno strumento dedicato \cite{whalen2000}. Tra le aziende che rilasciarono strumenti di rimozione e aggiornamenti delle firme si trovano \textbf{McAfee}, \textbf{F-Secure}, \textbf{Symantec}, \textbf{Sophos} e \textbf{Trend Micro}. L'episodio cambiò anche il comportamento dei produttori di antivirus, che dovettero distribuire gli aggiornamenti molto più rapidamente del solito \cite{ebsco2023}.
 
-Nel frattempo gli amministratori adottarono misure di contenimento: il CERT/CC consigliò di filtrare sui server di posta i messaggi con oggetto ``ILOVEYOU'' e di bloccare gli allegati \texttt{.vbs} \cite{2cert2000}. Anche i fornitori di accesso a Internet intervennero: il provider filippino Sky Internet rimosse le pagine che distribuivano il trojan \texttt{WIN-BUGSFIX.exe}.
+Le misure di contenimento adottate dagli amministratori sono descritte nella Sezione~\ref{sec:Contromisure}.
 
-La parte più difficile fu il recupero dei dati. Poiché il worm sovrascriveva immagini, documenti e script con copie di sé stesso, i file originali andavano ripristinati da backup, e in alcuni casi, come alla NASA, nemmeno questo fu possibile. Per questo la maggior parte del costo complessivo fu dovuta ai giorni di lavoro dei tecnici, più che al software di rimozione.
+La parte più difficile fu il recupero dei dati: i file sovrascritti dal worm (Sezione~\ref{subsec:fase3}) andavano ripristinati da backup, quando disponibili. Per questo la maggior parte del costo complessivo fu dovuta ai giorni di lavoro dei tecnici, più che al software di rimozione.
