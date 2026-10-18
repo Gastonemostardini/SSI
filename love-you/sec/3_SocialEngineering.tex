@@ -1,42 +1,32 @@
 \section{Social Engineering}\label{sec:SocialEngineering}
-In questa sezione si analizza la \emph{Social Engineering} dietro al malware trattato.
 
 \subsection{Curiosità ed emozioni}
-Ricevere un'email da una persona con oggetto ``ILOVEYOU'' e corpo ``Kindly check the attached LOVELETTER coming from me.'' fa crescere la curiosità nell'animo della vittima. 
-Il messaggio particolarmente breve e generico contribuiva a far credere alla vittima che l'email fosse legittima qualunque fosse il mittente.
+Ricevere un'email con oggetto ``ILOVEYOU'' e corpo ``Kindly check the attached LOVELETTER coming from me.'' suscita curiosità, e un messaggio così breve e generico sembrava legittimo qualunque fosse il mittente.
 
-Si consideri anche che l'esca emotiva utilizzata è proprio l'amore; 
-infatti tra tutte le emozioni venne scelta una tra le più forti, al pari di pochissime altre emozioni, 
-come ad esempio la paura che si tratterà nel seguito del capitolo~\ref{subsec:fear}.
-
-Si provi ad immaginare ora la sorpresa di ricevere attenzioni amorose inaspettate da un/una collega, un amico/un'amica oppure da un parente
-\begin{joke} 
+L'esca scelta è l'amore, una delle emozioni più forti insieme alla paura, di cui si parla nella Sezione~\ref{subsec:fear}.
+Si immagini la sorpresa di ricevere attenzioni amorose inaspettate da un/una collega, un amico/un'amica oppure da un parente
+\begin{joke}
   in Alabama.
 \end{joke}
-Questo sarebbe un fortissimo incentivo a controllare il contenuto, a causa della natura curiosa dell'essere umano. 
+Sarebbe un fortissimo incentivo ad aprire l'allegato.
 
 \subsection{Falsa sicurezza}
-Le email venivano ricevute da persone, precedentemente infettate, che avevano l'indirizzo email della vittima sul proprio ``Outlook address book''; 
-si suppone dunque che i mittenti avessero un certo grado di confidenza con la vittima.
-Più il mittente era fidato più aumentavano le possibilità del file di essere aperto e dunque del worm di diffondersi.
+L'email arrivava da qualcuno che aveva la vittima nella propria rubrica di Outlook, quindi presumibilmente da una persona con cui c'era confidenza: più il mittente era fidato, più era probabile che il file venisse aperto.
 
 Questo meccanismo trova riscontro nei principi di persuasione descritti da Robert Cialdini~\cite{cialdini1984influence}.
 \begin{description}
-  \item[Simpatia:] si è più propensi ad assecondare le richieste di chi si conosce e si apprezza, e un messaggio proveniente da un collega o da un amico viene valutato con molta meno diffidenza di uno proveniente da uno sconosciuto.
-  \item[Riprova sociale:] quando non si è sicuri di come comportarsi si tende a imitare ciò che fanno gli altri. Si innescava in più un fattore di curiosità ulteriore nel caso si ricevesse l'email da più soggetti.
+  \item[Simpatia:] si è più propensi ad assecondare chi si conosce e si apprezza, e un messaggio di un collega o di un amico viene valutato con molta meno diffidenza di quello di uno sconosciuto.
+  \item[Riprova sociale:] quando non si è sicuri di come comportarsi si tende a imitare gli altri, e ricevere l'email da più persone aumentava ulteriormente la curiosità.
 \end{description}
 
-Il worm conquistava fiducia ad ogni nuovo bersaglio, perché la ereditava, attraverso i rapporti interpersonali, da chi lo aveva preceduto.
-A moltiplicare il contagio c'è dunque la rete di conoscenze e fiducia personali e professionali tra le vittime.
+Il worm, quindi, ereditava a ogni passaggio la fiducia di chi lo aveva preceduto, e la rete di conoscenze personali e professionali ne moltiplicava il contagio.
 
 \subsection{Errore umano nella lettura del file}\label{subsec:estensione}
-Chiunque conosce l'estensione ``.txt'' e praticamente tutti la considerano non malevola.
-Il malware utilizzava una feature di Windows attiva di default che nascondeva l'estensione del file se riconosciuta dal sistema.
+L'estensione ``.txt'' è nota a tutti e considerata innocua.
+Il malware sfruttava un'impostazione di Windows, attiva di default, che nascondeva le estensioni riconosciute dal sistema: il file ``LOVE-LETTER-FOR-YOU.TXT.vbs'' veniva quindi visualizzato come ``LOVE-LETTER-FOR-YOU.TXT'', un'innocua lettera d'amore.
 
-Accadeva dunque che un file nominato ``LOVE-LETTER-FOR-YOU.TXT.vbs'' venisse visualizzato come ``LOVE-LETTER-FOR-YOU.TXT'', rafforzando l'idea che si trattasse di un'innocua lettera d'amore.
-
-L'unico indizio rimasto era l'icona: come si vede in \cref{fig:icone}, il file malevolo mostrava l'icona della pergamena tipica degli script di Windows, ben diversa da quella di un normale documento di testo.
-Purtroppo pochi utenti notavano questa differenza, e ancora meno ne conoscevano il significato.
+L'unico indizio rimasto era l'icona: come si vede in \cref{fig:icone}, il file malevolo mostrava la pergamena tipica degli script di Windows, diversa da quella di un documento di testo.
+Pochi utenti notavano questa differenza, e ancora meno ne conoscevano il significato.
 
 \begin{figure}[t]
   \centering
@@ -47,15 +37,15 @@ Purtroppo pochi utenti notavano questa differenza, e ancora meno ne conoscevano 
 
 \subsection{Paura}\label{subsec:fear}
 Se l'amore spinge ad aprire l'allegato per curiosità, la paura lo fa per urgenza.
-Una delle varianti comparse nei giorni successivi, con oggetto ``Virus ALERT!!!'', si presentava infatti come un avviso di sicurezza di Symantec che invitava ad aprire l'allegato \texttt{protect.vbs} per proteggersi proprio dal virus che stava circolando~\cite{festa2000symantec}.
-In questo caso alla paura si aggiunge il principio di \emph{autorità}~\cite{cialdini1984influence}: il messaggio imitava una comunicazione ufficiale, a cui si tende a obbedire senza troppe verifiche.
+Una delle varianti, con oggetto ``Virus ALERT!!!'', si presentava come un avviso di sicurezza di Symantec che invitava ad aprire l'allegato \texttt{protect.vbs} per proteggersi proprio dal virus in circolazione~\cite{festa2000symantec}.
+Alla paura si aggiunge qui il principio di \emph{autorità}~\cite{cialdini1984influence}: il messaggio imitava una comunicazione ufficiale, a cui si tende a obbedire senza troppe verifiche.
 
 \subsection{Altre varianti dell'esca}\label{subsec:varianti}
-Già nelle ore successive alla prima ondata comparvero numerose copie modificate del worm, che riutilizzavano quasi interamente il codice originale cambiando soprattutto l'esca~\cite{gao2000iloveyou,festa2000mutations}.
-Tra le più note vi erano ``Mothers Day Order Confirmation'', che simulava la conferma di un addebito di 326,92 dollari sulla carta di credito facendo leva sull'ansia economica, e ``fwd: Joke'', con un allegato dal nome \texttt{Very Funny.vbs} che prometteva qualcosa di divertente~\cite{fcw2000mutates}.
-Questo dimostra che la tecnica era facilmente riutilizzabile: bastava sostituire la leva emotiva per raggiungere un nuovo pubblico di vittime.
+Già nelle ore successive comparvero numerose copie del worm che riutilizzavano quasi interamente il codice originale, cambiando soprattutto l'esca~\cite{gao2000iloveyou,festa2000mutations}.
+Tra le più note vi erano ``Mothers Day Order Confirmation'', che simulava un addebito di 326,92 dollari sulla carta di credito facendo leva sull'ansia economica, e ``fwd: Joke'', con un allegato \texttt{Very Funny.vbs} che prometteva qualcosa di divertente~\cite{fcw2000mutates}.
+Bastava sostituire la leva emotiva per raggiungere un nuovo pubblico di vittime.
 
 \subsection{Il fattore tempo}
-Come descritto nella Sezione~\ref{subsec:diffusioneIniziale}, il worm si diffuse seguendo l'orario d'ufficio dei diversi fusi orari.
-In Europa e negli Stati Uniti molte vittime trovarono dunque il messaggio tra la posta del mattino, appena arrivate in ufficio~\cite{wired2000lovebug}, con molte email da smaltire e poco tempo per valutare ciascuna di esse.
-Fretta e abitudine riducono l'attenzione, e un'email in più nella casella passava facilmente inosservata.
+Il worm si diffuse seguendo l'orario d'ufficio dei diversi fusi orari (Sezione~\ref{subsec:diffusioneIniziale}).
+In Europa e negli Stati Uniti molte vittime trovarono il messaggio tra la posta del mattino, appena arrivate in ufficio~\cite{wired2000lovebug}, con molte email da smaltire e poco tempo per valutarle.
+Fretta e abitudine riducono l'attenzione, e un'email in più passava facilmente inosservata.

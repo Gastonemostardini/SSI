@@ -2,30 +2,28 @@
 
 \subsection{Diffusione iniziale}\label{subsec:diffusioneIniziale}
 
-ILOVEYOU inizialmente era stato progettato per funzionare solo a Manila. In seguito questa limitazione fu rimossa, permettendo al worm di diffondersi in tutto il mondo \cite{white2020}. Le prime segnalazioni ai produttori di antivirus risalgono alla mattina del 4 maggio 2000 \cite{whalen2000}. Seguendo i fusi orari, il worm si spostò verso ovest attraverso i sistemi di posta aziendali, mentre i dipendenti iniziavano la giornata lavorativa e aprivano la posta: raggiunse prima Hong Kong nel pomeriggio, poi l'Europa, dove era mattina, e infine gli Stati Uniti al risveglio \cite{gao2000iloveyou,bbc2000loveyou,guardian2000lovebug}. Ogni nuovo messaggio sembrava provenire da una persona conosciuta, perché il worm si inviava ai contatti della rubrica della vittima (Sezione~\ref{subsec:fase2}).
+ILOVEYOU era stato inizialmente progettato per funzionare solo a Manila; questa limitazione fu poi rimossa, permettendo al worm di diffondersi in tutto il mondo \cite{white2020}. Le prime segnalazioni ai produttori di antivirus risalgono alla mattina del 4 maggio 2000 \cite{whalen2000}. Seguendo i fusi orari, il worm si spostò verso ovest man mano che i dipendenti iniziavano la giornata e aprivano la posta: prima Hong Kong nel pomeriggio, poi l'Europa, dove era mattina, e infine gli Stati Uniti al risveglio \cite{gao2000iloveyou,bbc2000loveyou,guardian2000lovebug}.
 
 \subsection{Diffusione in enti governativi e aziende}
 
-Il worm paralizzò la posta elettronica di molte organizzazioni, che in diversi casi dovettero spegnere i server per il volume di messaggi generato. Secondo il rapporto del GAO \cite{gao2000iloveyou}, furono colpiti, tra gli altri:
+Il worm paralizzò la posta elettronica di molte organizzazioni, che in diversi casi dovettero spegnere i server per il volume di messaggi. Secondo il rapporto del GAO \cite{gao2000iloveyou}, furono colpiti, tra gli altri:
 
 \begin{itemize}
-    \item In Belgio, il sistema bancario nazionale;
-    \item Nel Regno Unito, i server di posta della \textit{House of Commons}, spenti per due ore;
-    \item Negli Stati Uniti, la maggior parte delle agenzie federali, tra cui il \textit{Dipartimento di Giustizia}, il \textit{Dipartimento del Lavoro} e la \textit{Social Security Administration}. Furono interessate anche le attività della \textit{CIA} e del \textit{Dipartimento della Difesa}, e alcuni file della \textit{NASA} furono danneggiati al punto da non poter essere recuperati nemmeno dai backup.
+    \item in Belgio, il sistema bancario nazionale;
+    \item nel Regno Unito, i server di posta della \textit{House of Commons}, spenti per due ore;
+    \item negli Stati Uniti, la maggior parte delle agenzie federali, tra cui il \textit{Dipartimento di Giustizia}, il \textit{Dipartimento del Lavoro} e la \textit{Social Security Administration}, oltre a \textit{CIA} e \textit{Dipartimento della Difesa}; alcuni file della \textit{NASA} non furono recuperabili nemmeno dai backup.
 \end{itemize}
 
-Alcuni dati danno la misura dell'impatto: la \textit{Veterans Health Administration} ricevette circa 7 milioni di email del worm, richiedendo 240 ore di lavoro per risolvere i problemi \cite{gao2000iloveyou}.
+La sola \textit{Veterans Health Administration} ricevette circa 7 milioni di email del worm, e servirono 240 ore di lavoro per risolvere i problemi \cite{gao2000iloveyou}.
 
 \subsection{Dispositivi colpiti e danni}
 
-Le prime stime, riportate da Whalen \cite{whalen2000}, parlavano di almeno 650 siti e oltre 500.000 sistemi coinvolti. Dopo circa dieci giorni dai primi casi si stimò che il worm avesse infettato circa \textbf{50 milioni} di computer, pari a circa il \textbf{10\%} di quelli connessi a Internet \cite{winder2020}.
+Le prime stime, riportate da Whalen \cite{whalen2000}, parlavano di almeno 650 siti e oltre 500.000 sistemi coinvolti. Dopo circa dieci giorni si stimò che il worm avesse infettato circa \textbf{50 milioni} di computer, circa il \textbf{10\%} di quelli connessi a Internet \cite{winder2020}.
 
-Il bersaglio erano i sistemi Windows. I sistemi Mac e UNIX non potevano eseguire lo script, ma potevano comunque contribuire alla diffusione inoltrando un file infetto ad altri utenti \cite{whalen2000}.
+Il bersaglio erano i sistemi Windows: Mac e UNIX non potevano eseguire lo script, ma potevano comunque inoltrare, manualmente o tramite inoltri automatici, il file infetto ad altri utenti \cite{whalen2000}.
 
 \subsection{Rimozione}
 
-Rimuovere ILOVEYOU richiese più di una semplice cancellazione del file ricevuto: il worm si era copiato nel sistema e registrato all'avvio (Sezione~\ref{subsec:fase1}), quindi serviva uno strumento dedicato \cite{whalen2000}. Tra le aziende che rilasciarono strumenti di rimozione e aggiornamenti delle firme si trovano \textbf{McAfee}, \textbf{F-Secure}, \textbf{Symantec}, \textbf{Sophos} e \textbf{Trend Micro}. L'episodio cambiò anche il comportamento dei produttori di antivirus, che dovettero distribuire gli aggiornamenti molto più rapidamente del solito \cite{ebsco2023}.
+Non bastava cancellare il file ricevuto: il worm si era copiato nel sistema e registrato all'avvio (Sezione~\ref{subsec:fase1}), quindi serviva uno strumento dedicato \cite{whalen2000}. Strumenti di rimozione e aggiornamenti delle firme furono rilasciati, tra gli altri, da \textbf{McAfee}, \textbf{F-Secure}, \textbf{Symantec}, \textbf{Sophos} e \textbf{Trend Micro}, che dovettero distribuirli molto più rapidamente del solito \cite{ebsco2023}.
 
-Le misure di contenimento adottate dagli amministratori sono descritte nella Sezione~\ref{sec:Contromisure}.
-
-La parte più difficile fu il recupero dei dati: i file sovrascritti dal worm (Sezione~\ref{subsec:fase3}) andavano ripristinati da backup, quando disponibili. Per questo la maggior parte del costo complessivo fu dovuta ai giorni di lavoro dei tecnici, più che al software di rimozione.
+La parte più difficile fu il recupero dei file sovrascritti (Sezione~\ref{subsec:fase3}) da backup, quando disponibili: la maggior parte del costo complessivo fu dovuta ai giorni di lavoro dei tecnici, più che al software di rimozione.
