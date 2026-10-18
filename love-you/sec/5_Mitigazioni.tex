@@ -10,13 +10,7 @@ Sul piano umano, invitava gli utenti a prestare attenzione (\emph{``exercise cau
 Nel 2000 il rilevamento si basava su antivirus aggiornati, scansioni dei file e indicatori riconoscibili, come l’allegato \texttt{LOVE-LETTER-FOR-YOU.TXT.vbs} e l'oggetto \emph{ILOVEYOU} \cite{cert2000, bishop2000}. La sua efficacia dipendeva dalla rapidità con cui gli avvisi del CERT e dei produttori di antivirus arrivavano agli amministratori e venivano applicati \cite{cert2000, gao2000iloveyou}.
 
 \subsection{Contenimento}
-Il contenimento richiedeva rapidità, poiché il worm si propagava tramite Outlook (Sezione~\ref{subsec:fase2}), IRC e cartelle condivise \cite{cert2000, bishop2000}. Le azioni principali erano:
-\begin{itemize}
-    \item \textbf{Blocco dei messaggi infetti:} filtrare sui server di posta i messaggi con oggetto ``ILOVEYOU'' e gli allegati \texttt{.vbs}, come consigliato dal CERT/CC \cite{cert2000}.
-    \item \textbf{Canali alternativi:} disabilitare la ricezione automatica dei file via DCC nei client IRC \cite{cert2000}.
-    \item \textbf{Isolamento:} scollegare dalla rete i sistemi infetti, per impedire ulteriori invii \cite{cichonski2012}.
-    \item \textbf{Coordinamento:} condividere tempestivamente indicatori e misure di blocco tra organizzazioni; le difficoltà incontrate su questo fronte sono discusse nel rapporto del GAO \cite{gao2000iloveyou}.
-\end{itemize}
+Il contenimento richiedeva rapidità, poiché il worm si propagava tramite Outlook (Sezione~\ref{subsec:fase2}), IRC e cartelle condivise \cite{cert2000, bishop2000}. Le azioni principali erano: il blocco dei messaggi infetti, ovvero filtrare sui server di posta i messaggi con oggetto ``ILOVEYOU'' e gli allegati \texttt{.vbs}, l'interruzione dei canali di diffusione alternativi, quindi disabilitare la ricezione automatica dei file via DCC nei client IRC \cite{cert2000}, l'isolamento delle macchine compromesse, scollegando dalla rete i sistemi infetti per impedire ulteriori invii \cite{cichonski2012} e, infine, il coordinamento tra amministratori e organizazioni, ossia la condivisione tempestiva di indicatori e misure di blocco tra organizzazioni.
 
 \subsection{Ripristino}
 Il ripristino prevedeva l’uso degli strumenti di pulizia dei produttori di antivirus, il recupero dei file da copie integre e la verifica che non restassero componenti o configurazioni capaci di riattivare l'infezione, prima di reinserire il sistema in rete \cite{cichonski2012, nelson2025}. L’incidente mostrò così l’importanza di copie di sicurezza affidabili.
