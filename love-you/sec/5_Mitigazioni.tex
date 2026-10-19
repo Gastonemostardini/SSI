@@ -4,7 +4,7 @@ Il riferimento principale per la risposta all'incidente è l’advisory CA-2000-
 \subsection{Prevenzione}
 Il CERT raccomandava di impedire l’esecuzione degli script disabilitando Windows Script Host (WSH) e, ove opportuno, lo scripting attivo in Internet Explorer, oltre a mantenere aggiornati gli antivirus per riconoscere le varianti note \cite{cert2000}.
 
-Sul piano umano, invitava gli utenti a prestare attenzione (\emph{``exercise caution''}): verificare la provenienza dei messaggi e non aprire allegati inattesi \cite{cert2000, bishop2000}.
+Sul piano umano, invitava gli utenti a prestare attenzione (\emph{``exercise caution''}): verificare la provenienza dei messaggi e non aprire allegati inattesi \cite{cert2000}.
 
 \subsection{Rilevamento}
 Nel 2000 il rilevamento si basava su antivirus aggiornati, scansioni dei file e indicatori riconoscibili, come l’allegato \texttt{LOVE-LETTER-FOR-YOU.TXT.vbs} e l'oggetto \emph{ILOVEYOU} \cite{cert2000, bishop2000}. La sua efficacia dipendeva dalla rapidità con cui gli avvisi del CERT e dei produttori di antivirus arrivavano agli amministratori e venivano applicati \cite{cert2000, gao2000iloveyou}.
@@ -22,11 +22,11 @@ Matt Bishop, nella sua analisi del worm \cite{bishop2000}, evidenzia i limiti de
 Nel 2000 la risposta si basava su avvisi, aggiornamento delle firme e applicazione manuale delle contromisure \cite{cert2000, gao2000iloveyou}. Oggi le organizzazioni dispongono di strumenti più integrati, in un approccio basato sulla gestione continua del rischio \cite{nelson2025, nist2024csf}:
 
 \begin{itemize}
-    \item \textbf{Prevenzione:} i gateway email bloccano gli allegati pericolosi e li analizzano in sandbox, mentre l'\emph{application control} applica il minimo privilegio proposto da Bishop \cite{bishop2000, nist2024csf}.
+    \item \textbf{Prevenzione:} i gateway email bloccano gli allegati pericolosi e li analizzano in sandbox, mentre l'\emph{application control} applica il minimo privilegio proposto da Bishop \cite{bishop2000, nelson2025, nist2024csf}.
     \item \textbf{Rilevamento:} gli strumenti di monitoraggio degli endpoint e i SIEM (\emph{Security Information and Event Management}) analizzano e correlano le attività dei dispositivi, individuando comportamenti anomali anche senza una firma nota \cite{nelson2025, nist2024csf}.
-    \item \textbf{Contenimento:} le piattaforme di sicurezza isolano automaticamente gli endpoint sospetti e bloccano i messaggi dannosi, mentre la segmentazione della rete limita l'estensione di un'infezione \cite{nelson2025, nist2024csf}.
-    \item \textbf{Ripristino:} backup verificati e immutabili e procedure documentate riducono i tempi di inattività e la perdita di dati \cite{nelson2025, nist2024csf}.
-    \item \textbf{Formazione:} sensibilizzazione, simulazioni di \emph{phishing} ed esercitazioni preparano utenti e tecnici a riconoscere e gestire una minaccia \cite{nelson2025, nist2024csf}.
+    \item \textbf{Contenimento:} le piattaforme di sicurezza isolano automaticamente gli endpoint sospetti e bloccano i messaggi dannosi \cite{nelson2025, nist2024csf}.
+    \item \textbf{Ripristino:} backup verificati e procedure documentate riducono i tempi di inattività e la perdita di dati \cite{nelson2025, nist2024csf}.
+    \item \textbf{Formazione:} sensibilizzazione sul \emph{phishing} ed esercitazioni preparano utenti e tecnici a riconoscere e gestire una minaccia \cite{nelson2025, nist2024csf}.
 \end{itemize}
 
 L'approccio diventa così più proattivo, ma il rischio non è eliminato: configurazioni errate, strumenti non aggiornati e tecniche di \emph{social engineering} sempre più sofisticate possono ancora far riuscire un attacco \cite{nelson2025, nist2024csf}.
