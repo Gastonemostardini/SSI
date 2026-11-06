@@ -1,0 +1,8 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}\hskip -1em.~Introduzione alla sicurezza delle password}{1}{section.1}%
+\contentsline {section}{\numberline {2}\hskip -1em.~OSINT: raccolta e analisi delle informazioni}{1}{section.2}%
+\contentsline {section}{\numberline {3}\hskip -1em.~Attacchi a dizionario: principi e funzionamento}{1}{section.3}%
+\contentsline {section}{\numberline {4}\hskip -1em.~Integrazione dell'OSINT negli attacchi a dizionario}{1}{section.4}%
+\contentsline {section}{\numberline {5}\hskip -1em.~Analisi della prevedibilità delle password}{1}{section.5}%
+\contentsline {section}{\numberline {6}\hskip -1em.~Contromisure e conclusioni}{1}{section.6}%
