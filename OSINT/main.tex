@@ -1,0 +1,75 @@
+% CVPR 2026 Paper Template; see https://github.com/cvpr-org/author-kit
+
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+%%%%%%%%% PAPER TYPE
+\usepackage[pagenumbers]{cvpr}   
+
+% Import additional packages in the preamble file, before hyperref
+\input{preamble}
+
+% If you comment hyperref and then uncomment it, you should delete *.aux before re-running LaTeX.
+% (Or just hit 'q' on the first LaTeX run, let it finish, and you should be clear).
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+
+%%%%%%%%% PAPER ID  -
+\def\paperID{OSINT-SSI}
+\def\confName{CVPR}
+\def\confYear{2026}
+
+%%%%%%%%% TITLE - PLEASE UPDATE
+\title{OSINT e attacchi a dizionario:\\
+la prevedibilità delle password}
+
+%%%%%%%%% AUTHORS - PLEASE UPDATE
+\author{
+Dosso Giulia\\
+s371760\\
+{\tt\small s371760@studenti.polito.it}
+\and
+Franco Samuele\\
+s321821\\
+{\tt\small s321821@studenti.polito.it}
+\and
+Gagliano Alessio\\
+s372702\\
+{\tt\small s372702@studenti.polito.it}
+\and
+Mostardini Gastone Mario\\
+s309861\\
+{\tt\small s309861@studenti.polito.it}
+\and
+Persici Alessandro Luca\\
+s358415\\
+{\tt\small s358415@studenti.polito.it}
+\and
+Raschiatore Federica\\
+322412\\
+{\tt\small 322412@studenti.polito.it}
+}
+
+\begin{document}
+\maketitle
+\input{sec/0_abstract}
+\input{sec/1_Introduzione}
+\input{sec/2_OSINT}
+\input{sec/3_AttacchiDizionario}
+\input{sec/4_IntegrazioneOSINT}
+\input{sec/5_Prevedibilita}
+\input{sec/6_Contromisure}
+\section*{Dichiarazione sull'uso dell'IA}
+Nella stesura di questo elaborato si è utilizzato Claude (Anthropic) come assistente
+per la ricerca e la verifica delle fonti bibliografiche, la revisione linguistica e il
+supporto alla formattazione \LaTeX{}. Tutti i contenuti sono stati verificati,
+rivisti e approvati dagli autori, che se ne assumono la piena responsabilità.
+{
+    \small
+    \bibliographystyle{ieeenat_fullname}
+    \bibliography{main}
+}
+
+% WARNING: do not forget to delete the supplementary pages from your submission 
+% \input{sec/X_suppl}
+
+\end{document}
