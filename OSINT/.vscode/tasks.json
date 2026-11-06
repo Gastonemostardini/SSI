@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Conta parole (sec)",
+      "type": "shell",
+      "command": "${workspaceFolder}/../conta_parole.sh ${workspaceFolderBasename}",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    }
+  ]
+}
