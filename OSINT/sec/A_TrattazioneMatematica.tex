@@ -25,7 +25,7 @@ Se si ammettono tutte le lunghezze da \(1\) a \(L\), il dominio diventa
 \[
     \vert\Omega\vert = \sum_{\ell=1}^{L} N^\ell = \frac{N(N^L - 1)}{N - 1} \approx N^L \cdot \frac{N}{N-1},
 \]
-che per alfabeti realistici (\(N \geq 10\)) differisce da \(N^L\) per meno del \(12\%\): le password più corte contano poco, e \(N^L\) resta una buona approssimazione.
+che per alfabeti realistici (insieme dei caratteri ammessi \(\geq 10\)) differisce da \(N^L\) per meno del \(12\%\). Questo significa che le password più corte contano poco, e \(N^L\) resta una buona approssimazione.
 
 \paragraph{Entropia teorica.}
 Se l'utente sceglie la password in modo uniforme, cioè \(P(x) = 1/\vert\Omega\vert\) per ogni \(x \in \Omega\), l'entropia è
@@ -34,7 +34,7 @@ Se l'utente sceglie la password in modo uniforme, cioè \(P(x) = 1/\vert\Omega\v
         H = \log_2 \vert\Omega\vert = L \log_2 N.
     }
 \]
-Equivalentemente \(\vert\Omega\vert = 2^H\): un attaccante che prova le password una alla volta ne prova al massimo \(2^H\), e in media \((2^H + 1)/2 \approx 2^{H-1}\). Ogni bit in più raddoppia quindi il lavoro dell'attaccante.
+Un attaccante che prova le password una alla volta ne prova al massimo \(2^H\), e in media la azzecca dopo \((2^H + 1)/2 \approx 2^{H-1}\). Ogni bit in più raddoppia quindi il lavoro dell'attaccante.
 
 \paragraph{Tempo di attacco.}
 Se l'attaccante prova \(v\) password al secondo, il tempo necessario nel caso peggiore è
@@ -45,13 +45,13 @@ Se l'attaccante prova \(v\) password al secondo, il tempo necessario nel caso pe
 \begin{example}
     Con \(N = 94\) (caratteri stampabili) e \(L = 8\) si ha \(H = 8 \log_2 94 \approx 52{,}4\) bit, cioè circa \(6 \cdot 10^{15}\) password. Con \(v = 10^{10}\) tentativi al secondo servono \(T \approx 6 \cdot 10^{5}\) secondi, circa una settimana.
 \end{example}
-Poiché presuppone una scelta uniforme, \(T\) è un limite superiore al tempo di attacco: come mostrato nella prossima sottosezione, nessuna distribuzione su \(\Omega\) ha entropia maggiore.
+Poiché presuppone una scelta completamente casuale, \(T\) è un limite massimo al tempo di attacco: nessuna distribuzione su \(\Omega\) ha entropia maggiore.
 
 \subsection{Modello reale}\label{app:ModelloReale}
-Le password reali non sono scelte in modo uniforme: i fattori di prevedibilità (parole di senso compiuto, schemi ricorrenti, dati personali, riuso) concentrano la probabilità su una piccola parte di \(\Omega\). La distribuzione \(P\) di \(X\) è quindi generica.
+Le password reali non sono scelte in modo uniforme: i fattori di prevedibilità (parole di senso compiuto, schemi ricorrenti, dati personali, riuso) concentrano la probabilità su una piccola parte di \(\Omega\). La distribuzione delle probabilità di \(X\) è quindi generica.
 
 \paragraph{Entropia di Shannon.}
-La quantità \(-\log_2 P(x)\) è detta \emph{autoinformazione} (o ``sorpresa'') della password \(x\): vale pochi bit se \(x\) è molto probabile, molti se è rara. L'entropia di \(X\) ne è il valore atteso:
+La quantità \(-\log_2 P(x)\) è detta \emph{autoinformazione} della password \(x\): vale pochi bit se \(x\) è molto probabile, molti se è rara. L'entropia di \(X\) ne è il valore atteso:
 \[
     \boxed{
         H(X) = -\sum_{x \in \Omega} P(x) \log_2 P(x) = \mathbb{E}\left[-\log_2 P(X)\right].
@@ -61,18 +61,11 @@ La quantità \(-\log_2 P(x)\) è detta \emph{autoinformazione} (o ``sorpresa'') 
     La difficoltà di una password non dipende dalla sua forma ma dalla sua probabilità. Una password \(x_0\) di 100 caratteri scelta dalla metà degli utenti ha \(P(x_0) = 1/2\), quindi autoinformazione \(-\log_2 \tfrac{1}{2} = 1\) bit: indovinarla è facile quanto indovinare il lancio di una moneta.
 \end{example}
 
-\paragraph{Proposizione (limite superiore).}
+\paragraph{Limite superiore.}
 Per ogni distribuzione su \(\Omega\)
 \[
     H(X) \leq \log_2 \vert\Omega\vert = L \log_2 N,
 \]
-con uguaglianza se e solo se \(X\) è uniforme.
-
-\emph{Dimostrazione.} La funzione \(\log_2\) è concava; per la disuguaglianza di Jensen
-\[
-    H(X) = \sum_{x : P(x) > 0} P(x) \log_2 \frac{1}{P(x)} \leq \log_2 \sum_{x : P(x) > 0} P(x) \cdot \frac{1}{P(x)} \leq \log_2 \vert\Omega\vert.
-\]
-Poiché \(\log_2\) è strettamente concava, la prima disuguaglianza è un'uguaglianza solo se \(P(x)\) è costante dove è positiva; la seconda solo se \(P(x) > 0\) per ogni \(x\). Insieme, solo se \(X\) è uniforme. \(\square\)
 
 \paragraph{Entropia minima.}
 L'entropia di Shannon è una media e non descrive bene l'attaccante che prova per prime le password più comuni. L'\emph{entropia minima} considera solo la password più probabile:
@@ -81,11 +74,10 @@ L'entropia di Shannon è una media e non descrive bene l'attaccante che prova pe
         H_{\infty}(X) = -\log_2 \left( \max_{x \in \Omega} P(x) \right).
     }
 \]
-La probabilità che l'attaccante indovini al primo tentativo, scegliendo la password più probabile, è esattamente \(2^{-H_{\infty}(X)}\). Inoltre
+La probabilità che l'attaccante indovini al primo tentativo, scegliendo la password più probabile, è esattamente \(2^{-H_{\infty}(X)}\). Inoltre valgono:
 \[
-    H_{\infty}(X) \leq H(X) \leq \log_2 \vert\Omega\vert,
+    H_{\infty}(X) \leq H(X) \leq \log_2 \vert\Omega\vert.
 \]
-perché \(-\log_2 P(x) \geq -\log_2 \max_{x'} P(x')\) per ogni \(x\), e la media di quantità tutte maggiori o uguali a \(H_{\infty}(X)\) non può essere minore di \(H_{\infty}(X)\).
 
 \begin{example}
     Riprendiamo l'Esempio~\ref{ex:password-comune}: \(\vert\Omega\vert = 1000\), \(P(\texttt{12345678}) = 0{,}35\) e le restanti 999 password equiprobabili, ciascuna con probabilità \(0{,}65/999\). Allora
@@ -114,7 +106,7 @@ L'incertezza residua su \(X\) dopo aver osservato \(D\) è
         I(X;D) = H(X) - H(X \mid D) = \sum_{x \in \Omega} \sum_{d \in \mathcal{D}} P(x, d) \log_2 \frac{P(x, d)}{P(x) P(d)}.
     }
 \]
-\paragraph{Proprietà.} \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono indipendenti. Infatti l'ultima espressione è la divergenza di Kullback--Leibler tra \(P(x,d)\) e \(P(x)P(d)\), che è non negativa e nulla solo quando le due distribuzioni coincidono (disuguaglianza di Gibbs). Equivalentemente \(H(X \mid D) \leq H(X)\): \emph{in media} conoscere \(D\) non aumenta l'incertezza. Per un singolo valore \(d\) può invece accadere che \(H(X \mid D = d) > H(X)\); la disuguaglianza vale sulla media pesata da \(P(d)\).
+Si noti che  \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono indipendenti. Infatti l'ultima espressione è la divergenza di Kullback--Leibler tra \(P(x,d)\) e \(P(x)P(d)\), che è non negativa e nulla solo quando le due distribuzioni coincidono (disuguaglianza di Gibbs). Equivalentemente \(H(X \mid D) \leq H(X)\): \emph{in media} conoscere \(D\) non aumenta l'incertezza. Per un singolo valore \(d\) può invece accadere che \(H(X \mid D = d) > H(X)\); la disuguaglianza vale sulla media pesata da \(P(d)\).
 
 \begin{example}
     \(X\) è uniforme su \(1024 = 2^{10}\) password, divise in 16 gruppi equiprobabili da 64; \(D\) indica il gruppo che contiene la password scelta. Dato \(D\), \(X\) è uniforme sulle 64 password del gruppo, quindi
@@ -142,18 +134,18 @@ L'incertezza residua su \(X\) dopo aver osservato \(D\) è
 % Vedremo che a ogni passaggio l'entropia diminuisce, e con essa il numero di tentativi necessari a un attacco.
 
 
-Modello di markov e PCFG grammatiche probabilistiche
+% Modello di markov e PCFG grammatiche probabilistiche
 
-\subsection{Passphrase}
-Sappiamo che gli umani tendenzialmente fnano schifo a inventarsi cose e che ricavano informazioni dall'ambienmte etc..
+% \subsection{Passphrase}
+% Sappiamo che gli umani tendenzialmente fnano schifo a inventarsi cose e che ricavano informazioni dall'ambienmte etc..
 
-\[
-    P(w_1,\ldots,w_k)
-    =P(w_1)\prod_{i=2}^{k}P(w_i\mid w_1,\ldots,w_{i-1})
-\]
-\[
-    H(W_1,\ldots,W_k)=\sum_{i=1}^{k}H(W_i\mid W_1,\ldots,W_{i-1})
-\]
+% \[
+%     P(w_1,\ldots,w_k)
+%     =P(w_1)\prod_{i=2}^{k}P(w_i\mid w_1,\ldots,w_{i-1})
+% \]
+% \[
+%     H(W_1,\ldots,W_k)=\sum_{i=1}^{k}H(W_i\mid W_1,\ldots,W_{i-1})
+% \]
 
 % [IDEA] Chiusura (3-4 righe, punto "impatto sugli attacchi"): l'esempio sopra in termini
 %   pratici, 4 bit in meno = 16 volte meno tentativi. Messi insieme, schemi prevedibili e dati

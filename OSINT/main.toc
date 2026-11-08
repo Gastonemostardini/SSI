@@ -16,10 +16,8 @@
 \contentsline {paragraph}{Tempo di attacco.}{3}{section*.6}%
 \contentsline {subsection}{\numberline {A.3}\hskip -1em.~Modello reale}{3}{subsection.Alph1.3}%
 \contentsline {paragraph}{Entropia di Shannon.}{4}{section*.7}%
-\contentsline {paragraph}{Proposizione (limite superiore).}{4}{section*.8}%
+\contentsline {paragraph}{Limite superiore.}{4}{section*.8}%
 \contentsline {paragraph}{Entropia minima.}{4}{section*.9}%
 \contentsline {subsection}{\numberline {A.4}\hskip -1em.~Modello con dati sull'utente}{4}{subsection.Alph1.4}%
 \contentsline {paragraph}{Entropia condizionata.}{4}{section*.10}%
-\contentsline {paragraph}{Informazione mutua.}{5}{section*.11}%
-\contentsline {paragraph}{Proprietà.}{5}{section*.12}%
-\contentsline {subsection}{\numberline {A.5}\hskip -1em.~Passphrase}{5}{subsection.Alph1.5}%
+\contentsline {paragraph}{Informazione mutua.}{4}{section*.11}%
