@@ -16,13 +16,31 @@
 
 \usepackage[italian]{babel}
 
+
 %%
 %% Battute numerate per sezione, stile teorema: "Joke 1.1: ..."
 %%
 \newcounter{joke}[section]
 \renewcommand{\thejoke}{\thesection.\arabic{joke}}
 \newenvironment{joke}{\par\refstepcounter{joke}\noindent\textbf{Joke~\thejoke:}\ \itshape\ignorespaces}
-  {\par\global\everypar{{\setbox0\lastbox}\global\everypar{}}} % a capo senza rientro: il testo dopo continua come stesso paragrafo
+{\par\global\everypar{{\setbox0\lastbox}\global\everypar{}}} % a capo senza rientro: il testo dopo continua come stesso paragrafo
+
+% roba matematica
+\usepackage{amsthm}
+\newtheoremstyle{qea}
+  {6pt}   % Spazio sopra
+  {6pt}   % Spazio sotto
+  {\normalfont} % Corpo del testo
+  {}      % Rientro
+  {\bfseries} % Titolo in grassetto
+  {:}     % Punteggiatura dopo il titolo
+  {0.5em} % Spazio dopo il titolo
+  {}      % Formato del titolo
+\theoremstyle{definition}
+\newtheorem{example}{Esempio}[section]
+\theoremstyle{qea}
+\newtheorem{question}[example]{Domanda}
+\newtheorem*{answer}{Risposta}
 %%
 %% disable for camera ready / submission by uncommenting these lines
 %%

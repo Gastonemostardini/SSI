@@ -5,4 +5,21 @@
 \contentsline {section}{\numberline {3}\hskip -1em.~Attacchi a dizionario: principi e funzionamento}{1}{section.3}%
 \contentsline {section}{\numberline {4}\hskip -1em.~Integrazione dell'OSINT negli attacchi a dizionario}{1}{section.4}%
 \contentsline {section}{\numberline {5}\hskip -1em.~Analisi della prevedibilità delle password}{1}{section.5}%
-\contentsline {section}{\numberline {6}\hskip -1em.~Contromisure e conclusioni}{1}{section.6}%
+\contentsline {subsection}{\numberline {5.1}\hskip -1em.~Modello teorico}{1}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}\hskip -1em.~Modello reale}{2}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}\hskip -1em.~Modello con dati su utenti}{2}{subsection.5.3}%
+\contentsline {section}{\numberline {6}\hskip -1em.~Contromisure e conclusioni}{3}{section.6}%
+\contentsline {section}{\numberline {A}\hskip -1em.~Trattazione matematica}{3}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {A.1}\hskip -1em.~Notazione}{3}{subsection.Alph1.1}%
+\contentsline {subsection}{\numberline {A.2}\hskip -1em.~Modello teorico}{3}{subsection.Alph1.2}%
+\contentsline {paragraph}{Entropia teorica.}{3}{section*.5}%
+\contentsline {paragraph}{Tempo di attacco.}{3}{section*.6}%
+\contentsline {subsection}{\numberline {A.3}\hskip -1em.~Modello reale}{3}{subsection.Alph1.3}%
+\contentsline {paragraph}{Entropia di Shannon.}{4}{section*.7}%
+\contentsline {paragraph}{Proposizione (limite superiore).}{4}{section*.8}%
+\contentsline {paragraph}{Entropia minima.}{4}{section*.9}%
+\contentsline {subsection}{\numberline {A.4}\hskip -1em.~Modello con dati sull'utente}{4}{subsection.Alph1.4}%
+\contentsline {paragraph}{Entropia condizionata.}{4}{section*.10}%
+\contentsline {paragraph}{Informazione mutua.}{4}{section*.11}%
+\contentsline {paragraph}{Proprietà.}{4}{section*.12}%
+\contentsline {subsection}{\numberline {A.5}\hskip -1em.~Passphrase}{5}{subsection.Alph1.5}%

@@ -1,0 +1,162 @@
+\section{Trattazione matematica}\label{app:TrattazioneMatematica}
+% Allegato: qui vanno i dettagli matematici che appesantirebbero il testo principale.
+% Nel corpo della relazione rimandare qui con \ref{app:TrattazioneMatematica}
+% (o con \cref{app:...} alle singole sottosezioni).
+In questo allegato riprendiamo in forma più rigorosa i modelli presentati nella \cref{sec:Prevedibilita}, con le definizioni, le proprietà principali e i calcoli degli esempi.
+
+\subsection{Notazione}\label{app:Notazione}
+\begin{itemize}
+    \item \(\Sigma\): insieme dei caratteri ammessi (l'\emph{alfabeto}), con \(N = \vert\Sigma\vert\).
+    \item \(L\): lunghezza della password.
+    \item \(\Omega\): insieme di tutte le password possibili; nel modello di base \(\Omega = \Sigma^L\).
+    \item \(X\): variabile aleatoria che rappresenta la password scelta dall'utente, a valori in \(\Omega\).
+    \item \(P(x) = \mathbb{P}(X = x)\): probabilità che venga scelta la password \(x \in \Omega\).
+    \item \(D\): variabile aleatoria che rappresenta l'informazione sull'utente in possesso dell'attaccante, a valori in un insieme \(\mathcal{D}\).
+    \item \(\log_2\): logaritmo in base 2; tutte le entropie sono espresse in \emph{bit}.
+    \item Si adotta la convenzione \(0 \log_2 0 = 0\).
+\end{itemize}
+
+\subsection{Modello teorico}\label{app:ModelloTeorico}
+Il numero di password di lunghezza \(L\) su un alfabeto di \(N\) caratteri è
+\[
+    \vert\Omega\vert = \vert\Sigma^L\vert = N^L.
+\]
+Se si ammettono tutte le lunghezze da \(1\) a \(L\), il dominio diventa
+\[
+    \vert\Omega\vert = \sum_{\ell=1}^{L} N^\ell = \frac{N(N^L - 1)}{N - 1} \approx N^L \cdot \frac{N}{N-1},
+\]
+che per alfabeti realistici (\(N \geq 10\)) differisce da \(N^L\) per meno del \(12\%\): le password più corte contano poco, e \(N^L\) resta una buona approssimazione.
+
+\paragraph{Entropia teorica.}
+Se l'utente sceglie la password in modo uniforme, cioè \(P(x) = 1/\vert\Omega\vert\) per ogni \(x \in \Omega\), l'entropia è
+\[
+    \boxed{
+        H = \log_2 \vert\Omega\vert = L \log_2 N.
+    }
+\]
+Equivalentemente \(\vert\Omega\vert = 2^H\): un attaccante che prova le password una alla volta ne prova al massimo \(2^H\), e in media \((2^H + 1)/2 \approx 2^{H-1}\). Ogni bit in più raddoppia quindi il lavoro dell'attaccante.
+
+\paragraph{Tempo di attacco.}
+Se l'attaccante prova \(v\) password al secondo, il tempo necessario nel caso peggiore è
+\[
+    T = \frac{2^H}{v}.
+\]
+È questa la grandezza riportata in \cref{fig:tempi-cracking-real}, calcolata per un valore di \(v\) tipico di un attacco \emph{offline} con GPU moderne contro un algoritmo di verifica veloce.
+\begin{example}
+    Con \(N = 94\) (caratteri stampabili) e \(L = 8\) si ha \(H = 8 \log_2 94 \approx 52{,}4\) bit, cioè circa \(6 \cdot 10^{15}\) password. Con \(v = 10^{10}\) tentativi al secondo servono \(T \approx 6 \cdot 10^{5}\) secondi, circa una settimana.
+\end{example}
+Poiché presuppone una scelta uniforme, \(T\) è un limite superiore al tempo di attacco: come mostrato nella prossima sottosezione, nessuna distribuzione su \(\Omega\) ha entropia maggiore.
+
+\subsection{Modello reale}\label{app:ModelloReale}
+Le password reali non sono scelte in modo uniforme: i fattori di prevedibilità (parole di senso compiuto, schemi ricorrenti, dati personali, riuso) concentrano la probabilità su una piccola parte di \(\Omega\). La distribuzione \(P\) di \(X\) è quindi generica.
+
+\paragraph{Entropia di Shannon.}
+La quantità \(-\log_2 P(x)\) è detta \emph{autoinformazione} (o ``sorpresa'') della password \(x\): vale pochi bit se \(x\) è molto probabile, molti se è rara. L'entropia di \(X\) ne è il valore atteso:
+\[
+    \boxed{
+        H(X) = -\sum_{x \in \Omega} P(x) \log_2 P(x) = \mathbb{E}\left[-\log_2 P(X)\right].
+    }
+\]
+\begin{example}
+    La difficoltà di una password non dipende dalla sua forma ma dalla sua probabilità. Una password \(x_0\) di 100 caratteri scelta dalla metà degli utenti ha \(P(x_0) = 1/2\), quindi autoinformazione \(-\log_2 \tfrac{1}{2} = 1\) bit: indovinarla è facile quanto indovinare il lancio di una moneta.
+\end{example}
+
+\paragraph{Proposizione (limite superiore).}
+Per ogni distribuzione su \(\Omega\)
+\[
+    H(X) \leq \log_2 \vert\Omega\vert = L \log_2 N,
+\]
+con uguaglianza se e solo se \(X\) è uniforme.
+
+\emph{Dimostrazione.} La funzione \(\log_2\) è concava; per la disuguaglianza di Jensen
+\[
+    H(X) = \sum_{x : P(x) > 0} P(x) \log_2 \frac{1}{P(x)} \leq \log_2 \sum_{x : P(x) > 0} P(x) \cdot \frac{1}{P(x)} \leq \log_2 \vert\Omega\vert.
+\]
+Poiché \(\log_2\) è strettamente concava, la prima disuguaglianza è un'uguaglianza solo se \(P(x)\) è costante dove è positiva; la seconda solo se \(P(x) > 0\) per ogni \(x\). Insieme, solo se \(X\) è uniforme. \(\square\)
+
+\paragraph{Entropia minima.}
+L'entropia di Shannon è una media e non descrive bene l'attaccante che prova per prime le password più comuni. L'\emph{entropia minima} considera solo la password più probabile:
+\[
+    \boxed{
+        H_{\infty}(X) = -\log_2 \left( \max_{x \in \Omega} P(x) \right).
+    }
+\]
+La probabilità che l'attaccante indovini al primo tentativo, scegliendo la password più probabile, è esattamente \(2^{-H_{\infty}(X)}\). Inoltre
+\[
+    H_{\infty}(X) \leq H(X) \leq \log_2 \vert\Omega\vert,
+\]
+perché \(-\log_2 P(x) \geq -\log_2 \max_{x'} P(x')\) per ogni \(x\), e la media di quantità tutte maggiori o uguali a \(H_{\infty}(X)\) non può essere minore di \(H_{\infty}(X)\).
+
+\begin{example}
+    Riprendiamo l'Esempio~\ref{ex:password-comune}: \(\vert\Omega\vert = 1000\), \(P(\texttt{12345678}) = 0{,}35\) e le restanti 999 password equiprobabili, ciascuna con probabilità \(0{,}65/999\). Allora
+    \[
+        \log_2 \vert\Omega\vert \approx 9{,}97 \text{ bit}, \qquad
+        H(X) \approx 7{,}41 \text{ bit}, \qquad
+        H_{\infty}(X) = -\log_2 0{,}35 \approx 1{,}51 \text{ bit}.
+    \]
+    L'entropia di Shannon resta relativamente alta, ma l'entropia minima mostra che l'attaccante indovina al primo tentativo con probabilità \(2^{-1{,}51} = 0{,}35\).
+\end{example}
+
+\subsection{Modello con dati sull'utente}\label{app:ModelloDati}
+Sia \(D\) l'informazione sull'utente nota all'attaccante (ad esempio la lingua parlata o l'anno di iscrizione a un servizio). In generale \(X\) e \(D\) non sono indipendenti: osservare \(D = d\) cambia la distribuzione della password da \(P(x)\) a \(P(x \mid d)\).
+
+\paragraph{Entropia condizionata.}
+L'incertezza residua su \(X\) dopo aver osservato \(D\) è
+\[
+    H(X \mid D) = \sum_{d \in \mathcal{D}} P(d) \, H(X \mid D = d),
+    \qquad
+    H(X \mid D = d) = -\sum_{x \in \Omega} P(x \mid d) \log_2 P(x \mid d).
+\]
+
+\paragraph{Informazione mutua.}
+\[
+    \boxed{
+        I(X;D) = H(X) - H(X \mid D) = \sum_{x \in \Omega} \sum_{d \in \mathcal{D}} P(x, d) \log_2 \frac{P(x, d)}{P(x) P(d)}.
+    }
+\]
+\paragraph{Proprietà.} \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono indipendenti. Infatti l'ultima espressione è la divergenza di Kullback--Leibler tra \(P(x,d)\) e \(P(x)P(d)\), che è non negativa e nulla solo quando le due distribuzioni coincidono (disuguaglianza di Gibbs). Equivalentemente \(H(X \mid D) \leq H(X)\): \emph{in media} conoscere \(D\) non aumenta l'incertezza. Per un singolo valore \(d\) può invece accadere che \(H(X \mid D = d) > H(X)\); la disuguaglianza vale sulla media pesata da \(P(d)\).
+
+\begin{example}
+    \(X\) è uniforme su \(1024 = 2^{10}\) password, divise in 16 gruppi equiprobabili da 64; \(D\) indica il gruppo che contiene la password scelta. Dato \(D\), \(X\) è uniforme sulle 64 password del gruppo, quindi
+    \[
+        H(X) = 10 \text{ bit}, \qquad H(X \mid D) = \log_2 64 = 6 \text{ bit}, \qquad I(X;D) = 4 \text{ bit}.
+    \]
+    In questo caso \(I(X;D) = H(D) = \log_2 16\): poiché il gruppo è determinato dalla password, \(D\) rivela esattamente i 4 bit che servono a identificarlo.
+\end{example}
+
+\begin{example}
+    Riprendiamo l'Esempio~\ref{ex:telefono}. \(X\) è uniforme sui \(10^9\) numeri di cellulare (10 cifre, la prima è sempre 3) e \(D\) sono le prime 7 cifre, di cui 6 libere. Dato \(D\), restano \(10^3\) numeri equiprobabili:
+    \[
+        H(X) = \log_2 10^9 \approx 29{,}90 \text{ bit}, \qquad
+        H(X \mid D) = \log_2 10^3 \approx 9{,}97 \text{ bit},
+    \]
+    \[
+        I(X;D) = \log_2 10^6 \approx 19{,}93 \text{ bit}.
+    \]
+    I valori arrotondati \(30\), \(10\) e \(20\) bit usati nel testo principale sono quindi corretti a meno di un decimo di bit. In termini di tentativi, l'informazione raccolta li divide per \(2^{I(X;D)} = 10^6\).
+\end{example}
+
+% Nelle sezioni precedenti abbiamo visto come funzionano gli attacchi a dizionario (\cref{sec:AttacchiDizionario}) e come l'OSINT li renda più mirati (\cref{sec:IntegrazioneOSINT}).
+% Resta da capire \emph{quanto} una password sia davvero difficile da indovinare.
+% In questa sezione introduciamo l'entropia, una misura dell'incertezza espressa in bit, e la usiamo per confrontare tre scenari: password scelte a caso, password scelte da persone reali e password di cui l'attaccante conosce qualche informazione sull'utente.
+% Vedremo che a ogni passaggio l'entropia diminuisce, e con essa il numero di tentativi necessari a un attacco.
+
+
+Modello di markov e PCFG grammatiche probabilistiche
+
+\subsection{Passphrase}
+Sappiamo che gli umani tendenzialmente fnano schifo a inventarsi cose e che ricavano informazioni dall'ambienmte etc..
+
+\[
+    P(w_1,\ldots,w_k)
+    =P(w_1)\prod_{i=2}^{k}P(w_i\mid w_1,\ldots,w_{i-1})
+\]
+\[
+    H(W_1,\ldots,W_k)=\sum_{i=1}^{k}H(W_i\mid W_1,\ldots,W_{i-1})
+\]
+
+% [IDEA] Chiusura (3-4 righe, punto "impatto sugli attacchi"): l'esempio sopra in termini
+%   pratici, 4 bit in meno = 16 volte meno tentativi. Messi insieme, schemi prevedibili e dati
+%   OSINT trasformano una ricerca impossibile in un dizionario piccolo e mirato. Concludere
+%   con il rimando alla sez. 6: le contromisure servono ad aumentare H(X|D), cioè a scegliere
+%   password che non dipendono da ciò che si sa di noi (generatori, password manager).
