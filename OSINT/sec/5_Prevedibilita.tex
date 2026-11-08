@@ -1,7 +1,7 @@
 \section{Analisi della prevedibilità delle password}\label{sec:Prevedibilita}
 % TODO: scrivere il contenuto del capitolo
 
-In questa sezione introduciamo l'entropia, uno strumento matematico che ci permette di capire \emph{quanto} una password sia davvero difficile da indovinare. Per ragioni di spazio ci limitiamo a presentare i modelli e qualche esempio che ne chiarisca il significato; la trattazione formale si trova nell'Allegato~\ref{app:TrattazioneMatematica}.
+In questa sezione introduciamo l'entropia, uno strumento matematico che misura \emph{quanto} una password sia difficile da indovinare. Qui presentiamo i modelli con qualche esempio; la trattazione formale è nell'Allegato~\ref{app:TrattazioneMatematica}.
 \subsection{Modello teorico}
 Sia \(N\) il numero di caratteri disponibili e sia \(L\) la lunghezza della password.
 L'insieme di tutte le password possibili con queste caratteristiche (che chiameremo $\Omega$) è di dimensione:
@@ -24,22 +24,15 @@ Sotto queste ipotesi troviamo documentato il tempo che un attaccante impieghereb
     \caption{Tempo necessario per individuare una password casuale, in funzione della lunghezza e dei caratteri ammessi. \TODO{MOCKUP: sostituire con l'immagine definitiva e indicarne la fonte.}}
     \label{fig:tempi-cracking-real}
 \end{figure}
-Queste stime si basano su ipotesi aggiuntive sull'hardware dell'attaccante (GPU moderne) e sul tipo di attacco (\emph{offline}, ovvero condotto senza limiti al numero di tentativi); inoltre presuppongono che l'algoritmo utilizzato per verificare la password sia ``veloce''.
-Soprattutto, la tabella presuppone password scelte a caso: i tempi riportati sono quindi un limite superiore, cioè il caso migliore per chi si difende.
-Nella pratica le password reali vengono individuate molto prima.
+Queste stime presuppongono GPU moderne, un attacco \emph{offline} (senza limiti al numero di tentativi), un algoritmo di verifica ``veloce'' e, soprattutto, password scelte a caso: sono quindi un limite superiore, il caso migliore per chi si difende.
 \subsection{Modello reale}
-In realtà le password non sono equiprobabili. Esistono i fattori di prevedibilità: caratteristiche o comportamenti che rendono una password più facile da indovinare.
-Alcuni esempi sono parole di senso compiuto, schemi ricorrenti (maiuscola all'inizio, numero o ``!'' in fondo, sostituzioni tipo a\(\to\)@), dati personali (nomi, date), riuso della stessa password.
-Tenendo conto di questo, possiamo correggere il modello per avvicinarlo alla realtà.
+In realtà le password non sono equiprobabili: i \emph{fattori di prevedibilità}, come parole di senso compiuto, schemi ricorrenti (maiuscola all'inizio, ``!'' in fondo, sostituzioni tipo a\(\to\)@), dati personali e riuso, rendono alcune password molto più probabili di altre.
 
-Sia $X$ la variabile aleatoria che indica la password scelta. Questo significa che $X$ può essere una qualunque delle password possibili, con una certa probabilità. Logicamente la probabilità che \(X = \texttt{12345678}\) è maggiore della probabilità che \(X = \texttt{-B9\&8uò'}\), poiché una persona ricorda più facilmente la prima della seconda. Questa probabilità, che indichiamo con \(P(x)\) (ad esempio \(P(\texttt{12345678})\)), ci aiuta a misurare meglio l'``indovinabilità'' di una password. La formula dell'entropia (detta \emph{entropia di Shannon}) diventa:
+Sia \(X\) la variabile aleatoria che indica la password scelta e \(P(x)\) la probabilità che sia proprio \(x\): ad esempio \(P(\texttt{12345678})\) è molto maggiore di \(P(\texttt{-B9\&8uò'})\), perché la prima si ricorda più facilmente. L'entropia (detta \emph{di Shannon}) diventa:
 \[
     H(X) = -\sum_{x \in \Omega} P(x) \log_2 P(x),
 \]
 che, senza farsi prendere dal panico, significa che dobbiamo misurare la ``difficoltà'' di ogni password e farne una media, pesata sulla probabilità che venga scelta.
-\begin{example}
-    Una password difficilissima (ad esempio lunga 100 caratteri tra lettere, numeri e simboli), ma molto diffusa tra gli utenti, vale pochi bit di sicurezza.
-\end{example}
 In generale l'entropia delle password reali è minore di quella teorica, e al massimo uguale.
 
 Su questo si basano gli attacchi a dizionario più semplici: provare per prime le password più comuni.
@@ -55,16 +48,10 @@ L'\emph{entropia minima} \(H_{\infty}(X)\) misura proprio questo fenomeno: tiene
 \begin{answer}
     Le cose vanno peggio.
 \end{answer}
-Tutte le informazioni in possesso dell'attaccante potrebbero essere correlate alla password scelta. Vediamo alcuni esempi.
-\begin{example}
-    Conoscere la lingua di una persona potrebbe aiutare a stimare quali parole siano più probabili.
-\end{example}
-\begin{example}
-    Conoscere la data di iscrizione a un servizio può suggerire numeri (di solito l'anno) presenti nella password.
-\end{example}
+Ogni informazione in possesso dell'attaccante, come la lingua parlata o l'anno di iscrizione a un servizio, può essere correlata alla password scelta.
 Sia \(D\) un'informazione di cui disponiamo sull'utente. Per misurare quanto ci aiuti a indovinare la password si usa l'\emph{informazione mutua}:
 \[
-    I(X;D) = H(X) - H(X \mid D).
+    I(X;D) = H(X) - H(X \mid D),
 \]
 dove \(H(X \mid D)\) è l'incertezza che resta sulla password dopo aver conosciuto \(D\). La notazione \(I(X;D)\) si legge come \emph{l'informazione che \(D\) fornisce sulla password \(X\)}.
 L'informazione mutua non è mai negativa: se vale zero, \(D\) non dice nulla sulla password; 
