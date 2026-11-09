@@ -1,2 +1,45 @@
 \section{OSINT: raccolta e analisi delle informazioni}\label{sec:OSINT}
-% TODO: scrivere il contenuto del capitolo
+
+\subsection{Definizione e ruolo}
+
+L'\textbf{OSINT} (\textit{Open Source Intelligence}) è la raccolta e l'analisi di informazioni provenienti da fonti pubblicamente disponibili, o comunque non classificate, per produrre conoscenza utile a una decisione. ``Aperto'' non significa gratuito o facile da trovare, ma lecitamente accessibile, senza intrusioni. Nato in ambito militare e di intelligence, oggi l'OSINT è usato anche nel giornalismo, nelle indagini aziendali e nella sicurezza informatica.
+
+Un concetto centrale è la differenza tra \textit{dato}, \textit{informazione} e \textit{intelligence}. Un dato isolato, come una data di nascita o un nome, ha poco valore. Diventa informazione quando viene verificato e contestualizzato, e diventa intelligence quando è collegato ad altri elementi e interpretato rispetto a uno scopo preciso.
+
+\subsection{Il ciclo di raccolta e analisi}
+
+Il Manuale OSINT della NATO descrive il processo come un ciclo composto da sei fasi:
+
+\begin{enumerate}
+    \item \textbf{Definizione dei requisiti}: si stabilisce la domanda a cui rispondere e quali informazioni servono per farlo.
+    \item \textbf{Gestione della raccolta}: si scelgono le categorie di fonti e i limiti entro cui operare.
+    \item \textbf{Individuazione e validazione delle fonti}: si valuta l'affidabilità di ciascuna fonte.
+    \item \textbf{Fusione}: i dati provenienti da fonti diverse vengono confrontati e correlati.
+    \item \textbf{Presentazione}: i risultati vengono tradotti in un prodotto utilizzabile da chi deve decidere.
+    \item \textbf{Valutazione e retroazione}: si verifica se il risultato risponde alla domanda iniziale e si aggiornano i requisiti.
+\end{enumerate}
+
+Il ciclo non è lineare: i risultati di una fase spesso fanno emergere nuove domande e riportano il lavoro a quelle precedenti.
+
+\subsection{Le fonti pubbliche}
+
+Le fonti aperte si possono raggruppare in alcune grandi categorie:
+
+\begin{itemize}
+    \item \textbf{social network e piattaforme pubbliche}, dove le persone condividono volontariamente dettagli sulla propria vita, sugli interessi e sulle relazioni;
+    \item \textbf{siti web e documenti pubblici}, come pagine aziendali, comunicati, pubblicazioni e profili professionali;
+    \item \textbf{registri e archivi pubblici}, come elenchi professionali, registri societari e archivi web che conservano anche contenuti ormai rimossi;
+    \item \textbf{dati provenienti da violazioni}, cioè informazioni diffuse in seguito ad accessi non autorizzati a sistemi, che sono reperibili ma richiedono particolare cautela per il loro trattamento legale e deontologico.
+\end{itemize}
+
+Si distingue inoltre tra raccolta \textbf{passiva}, che si limita a consultare contenuti già pubblicati senza interagire con il soggetto o con i suoi sistemi, e raccolta \textbf{attiva}, che prevede un'interazione diretta e comporta rischi legali ed etici maggiori.
+
+\subsection{Dalla raccolta all'analisi}
+
+Raccogliere dati è solo la fase iniziale: il valore dell'OSINT dipende dalla qualità dell'analisi. La \textbf{validazione} serve a distinguere le informazioni affidabili da quelle errate, obsolete o riferite a omonimi, e si fonda sul confronto tra fonti indipendenti. La \textbf{correlazione} mette in relazione elementi apparentemente scollegati, come un nome, un luogo e una data, fino a delineare un quadro coerente. Un'informazione banale, se combinata con altre, può diventare molto più rivelatrice di quanto lo sia da sola.
+
+L'analisi ha però dei limiti: la grande quantità di dati disponibili rende difficile selezionare quelli rilevanti, le fonti non sono tutte aggiornate e il \textit{bias di conferma} può portare a privilegiare ciò che conferma un'ipotesi iniziale. Per questo l'attendibilità di ogni conclusione va dichiarata insieme alle fonti su cui poggia.
+
+\subsection{Aspetti etici e legali}
+
+Che un dato sia pubblico non rende lecito qualunque uso. In Europa la raccolta di dati personali, anche se accessibili, è soggetta al GDPR, che richiede una finalità determinata, una base giuridica e il rispetto del principio di minimizzazione. In ambito professionale l'OSINT si svolge perciò in contesti autorizzati, con regole di ingaggio definite.
