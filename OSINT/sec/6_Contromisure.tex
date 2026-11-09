@@ -1,2 +1,47 @@
 \section{Contromisure e conclusioni}\label{sec:Contromisure}
-% TODO: scrivere il contenuto del capitolo
+ 
+Gli attacchi a dizionario, soprattutto quando sfruttano le informazioni personali raccolte tramite OSINT, funzionano per un motivo semplice: molte password sono \textbf{prevedibili}. Difendersi significa quindi rendere le credenziali difficili da indovinare, aggiungere altre barriere oltre alla password e, per quanto riguarda i provider, far sì che anche i servizi online si proteggano dai tentativi di accesso.
+ 
+\subsection{Password resistenti agli attacchi a dizionario}\label{sec:pwd-resistenti}
+ 
+Un attacco a dizionario non prova tutte le combinazioni possibili, ma solo quelle più probabili: parole comuni, password già trapelate in precedenti furti di dati, nomi e date di nascita, anche con le modifiche più note (come \texttt{a}$\rightarrow$\texttt{@} o l'aggiunta di \texttt{123!}). Per questo una password come \texttt{P@ssw0rd!}, pur sembrando complicata, è debole. Le regole più efficaci sono:
+ 
+\begin{itemize}
+    \item \textbf{Scegliere password lunghe.} La lunghezza conta più dei simboli speciali: le linee guida NIST (SP 800-63B-4) indicano almeno 15 caratteri quando la password è l'unica protezione dell'account \cite{nist80063b}.
+    \item \textbf{Usare frasi composte da parole casuali.} Sei parole scelte a caso da un elenco di 7776 (metodo \emph{Diceware}) danno più di $2 \times 10^{23}$ combinazioni, ma sono facili da ricordare. Le parole devono essere davvero casuali, perché citazioni o frasi complete sono più facili da indovinare.
+    \item \textbf{Non usare informazioni personali} come nomi, date o hobby, spesso visibili sui social network.
+    \item \textbf{Usare una password diversa per ogni servizio.} Se una password viene rubata, i criminali la provano automaticamente su molti altri siti: è il cosiddetto \emph{credential stuffing}.
+\end{itemize}
+ 
+\subsection{Utilizzo di password manager}\label{sec:pwd-manager}
+ 
+Ricordare a mente password lunghe e diverse diventa difficile. Un \textbf{password manager} è un programma che le conserva in un archivio cifrato, protetto da un'unica ``password principale''. Può creare password casuali, avvisa se sono deboli o sono state rubate e le inserisce automaticamente solo sul sito corretto. Il rischio è che tutto dipenda da un solo accesso: la password principale deve quindi essere lunga, usata solo per questo scopo e protetta da un secondo fattore di verifica.
+ 
+\subsection{Autenticazione a più fattori (MFA)}\label{sec:mfa}
+ 
+L'\textbf{autenticazione a più fattori} (MFA, Multi-Factor Authentication) richiede, oltre alla password, una seconda prova di identità: ad esempio un codice generato dal telefono o una chiave fisica. Così, anche se la password viene scoperta e usata, l'accesso resta bloccato. Esistono vari metodi con diverso livello di sicurezza:
+ 
+\begin{itemize}
+    \item \textbf{SMS:} utile, ma più debole, perché il numero può essere intercettato o trasferito a una SIM clonata;
+    \item \textbf{app di autenticazione e notifiche sul telefono:} più sicure, ma un sito falso può convincere l'utente a inserire il codice o ad approvare una richiesta;
+    \item \textbf{chiavi di sicurezza fisiche e \emph{passkey}:} il metodo più robusto, perché funzionano solo sul sito autentico.
+\end{itemize}
+ 
+È sempre consigliato attivare l'MFA almeno su posta elettronica, servizi bancari e password manager.
+ 
+\subsection{Protezione dei sistemi dai tentativi di accesso}\label{sec:difese-sistema}
+ 
+Anche chi gestisce un servizio online deve difendersi. Le misure principali sono:
+ 
+\begin{itemize}
+    \item \textbf{limitare i tentativi di accesso}, rallentando o bloccando chi sbaglia la password più volte, anche con prove ``non sono un robot'';
+    \item \textbf{rifiutare le password troppo comuni} o già comparse in furti di dati, e non usare domande di sicurezza (``nome del tuo animale'') facili da scoprire con l'OSINT;
+    \item \textbf{conservare le password in forma protetta}, cioè trasformate in codici non reversibili con algoritmi lenti (come Argon2id), mai in chiaro \cite{owaspcheatsheet};
+    \item \textbf{controllare gli accessi} per individuare comportamenti sospetti, come molti tentativi falliti da una stessa origine che non corrisponde a quella tipica dell'utente, e avvisare questi ultimi.
+\end{itemize}
+ 
+\subsection{Conclusioni}\label{sec:conclusioni}
+ 
+L'OSINT è un sistema molto efficace che permette di raccogliere dati personali pubblici e di correlarli fino a profilare la vittima; gli attacchi a dizionario sfruttano le abitudini degli utenti provando prima le password più probabili; l'analisi dell'entropia mostra che ogni informazione personale in mano all'attaccante riduce l'incertezza residua.
+ 
+Il filo comune è la \textbf{prevedibilità}: più una credenziale è legata alla vita e ai dati pubblici di chi la sceglie, meno resiste. Le contromisure puntano quindi a scollegare la password dall'utente (lunghezza, casualità, unicità) e a limitare il danno quando viene comunque scoperta (MFA, blocklist, hashing lento, limiti ai tentativi). In futuro le passkey potrebbero sostituire le password; fino ad allora, ridurne la prevedibilità resta la difesa più efficace e meno costosa.
