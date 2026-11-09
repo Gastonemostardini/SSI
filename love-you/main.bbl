@@ -1,0 +1,67 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{BBC News}(2000)]{bbc2000loveyou}
+{BBC News}.
+\newblock `love' virus chaos spreads.
+\newblock BBC News Online, 2000.
+\newblock 4 maggio 2000.
+  \url{http://news.bbc.co.uk/2/hi/science/nature/736208.stm}.
+
+\bibitem[Brock(2000)]{gao2000iloveyou}
+Jack~L. Brock, Jr.
+\newblock Critical infrastructure protection: ``{ILOVEYOU}'' computer virus
+  highlights need for improved alert and coordination capabilities.
+\newblock Testimony before the Subcommittee on Financial Institutions,
+  Committee on Banking, Housing and Urban Affairs, U.S. Senate
+  GAO/T-AIMD-00-181, United States General Accounting Office, Washington, DC,
+  2000.
+\newblock
+  \url{https://www.govinfo.gov/content/pkg/GAOREPORTS-T-AIMD-00-181/pdf/GAOREPORTS-T-AIMD-00-181.pdf}.
+
+\bibitem[Cialdini(1984)]{cialdini1984influence}
+Robert~B. Cialdini.
+\newblock \emph{Influence: The Psychology of Persuasion}.
+\newblock William Morrow, New York, 1984.
+\newblock Ed. it.: \emph{Le armi della persuasione}, Giunti.
+
+\bibitem[{FCW Staff}(2000)]{fcw2000mutates}
+{FCW Staff}.
+\newblock Love letter virus mutates.
+\newblock Federal Computer Week, 2000.
+\newblock 5 maggio 2000.
+  \url{https://www.nextgov.com/digital-government/2000/05/love-letter-virus-mutates/252703}.
+
+\bibitem[Festa(2000{\natexlab{a}})]{festa2000mutations}
+Paul Festa.
+\newblock Experts say ``love'' spawns at least 8 mutations.
+\newblock CNET News.com, 2000{\natexlab{a}}.
+\newblock 5 maggio 2000.
+  \url{https://www.cnet.com/tech/tech-industry/experts-say-love-spawns-at-least-8-mutations/}.
+
+\bibitem[Festa(2000{\natexlab{b}})]{festa2000symantec}
+Paul Festa.
+\newblock Virus posing as {Symantec} email could be worst.
+\newblock CNET News.com, 2000{\natexlab{b}}.
+\newblock 5 maggio 2000.
+  \url{https://www.cnet.com/tech/tech-industry/virus-posing-as-symantec-email-could-be-worst/}.
+
+\bibitem[Jeffery(2000)]{guardian2000lovebug}
+Simon Jeffery.
+\newblock Love bug shuts down computers.
+\newblock The Guardian, 2000.
+\newblock 4 maggio 2000.
+  \url{https://www.theguardian.com/world/2000/may/04/simonjeffery}.
+
+\bibitem[{Wired Staff}(2000)]{wired2000lovebug}
+{Wired Staff}.
+\newblock `love bug' virus running amok.
+\newblock Wired News, 2000.
+\newblock 4 maggio 2000.
+  \url{https://www.wired.com/2000/05/love-bug-virus-running-amok/}.
+
+\end{thebibliography}
