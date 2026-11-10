@@ -9,26 +9,26 @@
 \contentsline {subsection}{\numberline {2.5}\hskip -1em.~Aspetti etici e legali}{3}{subsection.2.5}%
 \contentsline {section}{\numberline {3}\hskip -1em.~Attacchi a dizionario: principi e funzionamento}{3}{section.3}%
 \contentsline {section}{\numberline {4}\hskip -1em.~Integrazione dell'OSINT negli attacchi a dizionario}{3}{section.4}%
-\contentsline {section}{\numberline {5}\hskip -1em.~Analisi della prevedibilità delle password}{3}{section.5}%
-\contentsline {subsection}{\numberline {5.1}\hskip -1em.~Modello teorico}{3}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}\hskip -1em.~Modello reale}{4}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}\hskip -1em.~Modello con dati su utenti}{4}{subsection.5.3}%
-\contentsline {section}{\numberline {6}\hskip -1em.~Contromisure e conclusioni}{5}{section.6}%
-\contentsline {subsection}{\numberline {6.1}\hskip -1em.~Password resistenti agli attacchi a dizionario}{5}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}\hskip -1em.~Utilizzo di password manager}{5}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}\hskip -1em.~Autenticazione a più fattori (MFA)}{5}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}\hskip -1em.~Protezione dei sistemi dai tentativi di accesso}{5}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}\hskip -1em.~Conclusioni}{5}{subsection.6.5}%
+\contentsline {section}{\numberline {5}\hskip -1em.~Analisi della prevedibilità delle password}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}\hskip -1em.~Modello teorico}{5}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}\hskip -1em.~Modello reale}{6}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}\hskip -1em.~Modello con dati su utenti}{6}{subsection.5.3}%
+\contentsline {section}{\numberline {6}\hskip -1em.~Contromisure e conclusioni}{6}{section.6}%
+\contentsline {subsection}{\numberline {6.1}\hskip -1em.~Password resistenti agli attacchi a dizionario}{7}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}\hskip -1em.~Utilizzo di password manager}{7}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}\hskip -1em.~Autenticazione a più fattori (MFA)}{7}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}\hskip -1em.~Protezione dei sistemi dai tentativi di accesso}{7}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}\hskip -1em.~Conclusioni}{7}{subsection.6.5}%
 \setcounter {tocdepth}{0}
-\contentsline {section}{\numberline {A}\hskip -1em.~Trattazione matematica}{7}{appendix.Alph1}%
-\contentsline {subsection}{\numberline {A.1}\hskip -1em.~Notazione}{7}{subsection.Alph1.1}%
-\contentsline {subsection}{\numberline {A.2}\hskip -1em.~Modello teorico}{7}{subsection.Alph1.2}%
-\contentsline {paragraph}{Entropia teorica.}{7}{section*.5}%
-\contentsline {paragraph}{Tempo di attacco.}{7}{section*.6}%
-\contentsline {subsection}{\numberline {A.3}\hskip -1em.~Modello reale}{7}{subsection.Alph1.3}%
-\contentsline {paragraph}{Entropia di Shannon.}{8}{section*.7}%
-\contentsline {paragraph}{Limite superiore.}{8}{section*.8}%
-\contentsline {paragraph}{Entropia minima.}{8}{section*.9}%
-\contentsline {subsection}{\numberline {A.4}\hskip -1em.~Modello con dati sull'utente}{8}{subsection.Alph1.4}%
-\contentsline {paragraph}{Entropia condizionata.}{8}{section*.10}%
-\contentsline {paragraph}{Informazione mutua.}{8}{section*.11}%
+\contentsline {section}{\numberline {A}\hskip -1em.~Trattazione matematica}{9}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {A.1}\hskip -1em.~Notazione}{9}{subsection.Alph1.1}%
+\contentsline {subsection}{\numberline {A.2}\hskip -1em.~Modello teorico}{9}{subsection.Alph1.2}%
+\contentsline {paragraph}{Entropia teorica.}{9}{section*.11}%
+\contentsline {paragraph}{Tempo di attacco.}{9}{section*.12}%
+\contentsline {subsection}{\numberline {A.3}\hskip -1em.~Modello reale}{9}{subsection.Alph1.3}%
+\contentsline {paragraph}{Entropia di Shannon.}{10}{section*.13}%
+\contentsline {paragraph}{Limite superiore.}{10}{section*.14}%
+\contentsline {paragraph}{Entropia minima.}{10}{section*.15}%
+\contentsline {subsection}{\numberline {A.4}\hskip -1em.~Modello con dati sull'utente}{10}{subsection.Alph1.4}%
+\contentsline {paragraph}{Entropia condizionata.}{10}{section*.16}%
+\contentsline {paragraph}{Informazione mutua.}{10}{section*.17}%
