@@ -50,13 +50,12 @@ Raschiatore Federica\\
 }
 
 \begin{document}
-% \onecolumn
+\onecolumn
 \maketitle
 \tableofcontents
 \vspace{15pt}
+\twocolumn
 \input{sec/0_abstract}
-% \twocolumn
-% \newpage
 \input{sec/1_Introduzione}
 \input{sec/2_OSINT}
 \input{sec/3_AttacchiDizionario}
@@ -76,6 +75,7 @@ rivisti e approvati dagli autori, che se ne assumono la piena responsabilità.
 
 %%%%%%%%% ALLEGATI
 \onecolumn % allegati su una sola colonna
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} % allegati esclusi dall'indice
 \appendix
 \input{sec/A_TrattazioneMatematica}
 
