@@ -1,19 +1,13 @@
 \section{Analisi della prevedibilità delle password}\label{sec:Prevedibilita}
-% TODO: scrivere il contenuto del capitolo
 
-In questa sezione introduciamo l'entropia, uno strumento matematico che misura \emph{quanto} una password sia difficile da indovinare. Qui presentiamo i modelli con qualche esempio; la trattazione formale è nell'Allegato~\ref{app:TrattazioneMatematica}.
+L'entropia misura \emph{quanto} una password sia difficile da indovinare: qui ne diamo l'intuizione, la trattazione formale è nell'Allegato~\ref{app:TrattazioneMatematica}.
 \subsection{Modello teorico}
-Sia \(N\) il numero di caratteri disponibili e sia \(L\) la lunghezza della password.
-L'insieme di tutte le password possibili con queste caratteristiche (che chiameremo $\Omega$) è di dimensione:
+Con \(N\) caratteri disponibili e lunghezza \(L\) esistono \(N^L\) password; se la scelta è del tutto casuale, l'entropia teorica è
 \[
-    \vert\Omega\vert = N^L.
+    H = L \log_2 N \text{ bit},
 \]
-Supponendo che la password venga scelta in modo completamente casuale all'interno di \(\Omega\), possiamo definire l'entropia teorica:
-\[
-    H = L \log_2 N.
-\]
-Dire che una password ha \(H\) bit di sicurezza significa che, nel caso peggiore, bisogna provare \(2^H\) password per indovinarla.
-Sotto queste ipotesi troviamo documentato il tempo che un attaccante impiegherebbe a provarle tutte, al variare della lunghezza e dei tipi di caratteri ammessi (\cref{fig:tempi-cracking-real}).
+e nel caso peggiore servono \(2^H\) tentativi per indovinarla.
+La \cref{fig:tempi-cracking-real} mostra il tempo necessario al variare della lunghezza e dei caratteri ammessi.
 % [MOCKUP] Immagine provvisoria, da sostituire con quella definitiva.
 %   L'immagine vera DEVE avere la fonte: citarla nella caption con \cite{...} e aggiungerla a main.bib.
 \begin{figure}[t]
@@ -24,51 +18,25 @@ Sotto queste ipotesi troviamo documentato il tempo che un attaccante impieghereb
 \end{figure}
 Queste stime presuppongono GPU moderne, un attacco \emph{offline} (senza limiti al numero di tentativi), un algoritmo di verifica ``veloce'' e, soprattutto, password scelte a caso: sono quindi un limite superiore, il caso migliore per chi si difende.
 \subsection{Modello reale}
-In realtà le password non sono equiprobabili: i \emph{fattori di prevedibilità}, come parole di senso compiuto, schemi ricorrenti (\cref{sec:IntegrazioneOSINT}), dati personali e riuso, rendono alcune password molto più probabili di altre.
-
-Sia \(X\) la variabile aleatoria che indica la password scelta e \(P(x)\) la probabilità che sia proprio \(x\): ad esempio \(P(\texttt{12345678})\) è molto maggiore di \(P(\texttt{-B9\&8uò'})\), perché la prima si ricorda più facilmente. L'entropia (detta \emph{di Shannon}) diventa:
-\[
-    H(X) = -\sum_{x \in \Omega} P(x) \log_2 P(x),
-\]
-che, senza farsi prendere dal panico, significa che dobbiamo misurare la ``difficoltà'' di ogni password e farne una media, pesata sulla probabilità che venga scelta.
-In generale l'entropia delle password reali è minore di quella teorica, e al massimo uguale.
-
+In realtà le password non sono equiprobabili: parole di senso compiuto, schemi ricorrenti (\cref{sec:IntegrazioneOSINT}), dati personali e riuso rendono \texttt{12345678} molto più probabile di \texttt{-B9\&8uò'}.
+L'entropia \emph{di Shannon} \(H(X)\) della password scelta \(X\) misura allora la ``difficoltà'' media delle password, pesata sulla probabilità che vengano scelte, ed è sempre minore o uguale a quella teorica.
 Su questo si basano gli attacchi a dizionario più semplici: provare per prime le password più comuni.
 \begin{example}\label{ex:password-comune}
-    Supponiamo di avere 1000 password possibili, ma di sapere, per qualche motivo, che la password \texttt{12345678} è usata dal \(35\%\) degli utenti. Usando saggiamente questa informazione, la probabilità di indovinare la password di un utente al primo tentativo sale da una su $1000$ al $35\%$.
+    Su 1000 password possibili, sappiamo che \texttt{12345678} è usata dal \(35\%\) degli utenti: provandola per prima, la probabilità di indovinare al primo tentativo sale da una su $1000$ al $35\%$.
 \end{example}
 L'\emph{entropia minima} \(H_{\infty}(X)\) misura proprio questo fenomeno: tiene conto solo della password più probabile, cioè dell'anello più debole della catena. Per questo l'entropia di Shannon, che è una media, sovrastima la resistenza agli attacchi, come Bonneau~\cite{bonneau2012} ha mostrato su dati reali.
 
 \subsection{Modello con dati su utenti}
-\begin{question}
-    Cosa succede quando disponiamo di informazioni sull'utente?
-\end{question}
-\begin{answer}
-    Le cose vanno peggio.
-\end{answer}
-Ogni informazione in possesso dell'attaccante, come la lingua parlata o l'anno di iscrizione a un servizio, può essere correlata alla password scelta.
-Sia \(D\) un'informazione di cui disponiamo sull'utente. Per misurare quanto ci aiuti a indovinare la password si usa l'\emph{informazione mutua}:
+Ogni informazione in possesso dell'attaccante, come la lingua parlata o l'anno di iscrizione a un servizio, può essere correlata alla password.
+Quanto un'informazione \(D\) aiuti a indovinarla lo misura l'\emph{informazione mutua}
 \[
     I(X;D) = H(X) - H(X \mid D),
 \]
-dove \(H(X \mid D)\) è l'incertezza che resta sulla password dopo aver conosciuto \(D\). La notazione \(I(X;D)\) si legge come \emph{l'informazione che \(D\) fornisce sulla password \(X\)}.
-L'informazione mutua non è mai negativa: se vale zero, \(D\) non dice nulla sulla password; 
-se è positiva, \(D\) aiuta l'attaccante.
+dove \(H(X \mid D)\) è l'incertezza che resta dopo aver conosciuto \(D\). Non è mai negativa: se vale zero, \(D\) non dice nulla sulla password; se è positiva, aiuta l'attaccante.
 
 \begin{example}[Numero di telefono]\label{ex:telefono}
-    Vuoi chiamare la ragazza che ti piace per confessarle i tuoi sentimenti, ma non hai il suo numero, quindi decidi di provarli tutti.
-    Un numero di cellulare italiano ha 10 cifre e inizia con 3: restano 9 cifre libere, cioè \(10^9\) numeri possibili. L'entropia iniziale è
-    \[
-        H(X) = \log_2 10^9 \approx 30 \text{ bit}.
-    \]
-    Chiamare un miliardo di numeri non fa per te, quindi concludi che l'idea migliore è spiare la sua migliore amica! Mentre la spii, la vedi comporre il numero della ragazza che ti piace e riesci a memorizzarne le prime 7 cifre. Restano 3 cifre sconosciute, cioè \(10^3 = 1000\) numeri, e l'entropia residua è
-    \[
-        H(X \mid D) = \log_2 1000 \approx 10 \text{ bit},
-    \]
-    quindi l'informazione che hai raccolto vale
-    \[
-        I(X;D) = H(X) - H(X \mid D) \approx 30 - 10 = 20 \text{ bit}.
-    \]
-    Ciò significa che stasera dovrai scrivere su WhatsApp a ``soli'' 1000 numeri, invece che a un miliardo: sicuramente troverai quello della tua futura moglie!
+    Vuoi chiamare la ragazza che ti piace, ma non hai il suo numero. Un cellulare italiano ha 10 cifre e inizia con 3: restano \(10^9\) numeri possibili, cioè \(H(X) \approx 30\) bit.
+    Un miliardo di chiamate è troppo, quindi spii la sua migliore amica mentre lo compone e ne memorizzi le prime 7 cifre: restano \(1000\) numeri, \(H(X \mid D) \approx 10\) bit, e l'informazione raccolta vale \(I(X;D) \approx 20\) bit.
+    Stasera scriverai su WhatsApp a ``soli'' 1000 numeri invece che a un miliardo: sicuramente troverai quello della tua futura moglie!
     Con le password funziona allo stesso modo: ogni informazione raccolta con l'OSINT toglie bit all'incertezza e riduce i tentativi necessari all'attaccante.
 \end{example}

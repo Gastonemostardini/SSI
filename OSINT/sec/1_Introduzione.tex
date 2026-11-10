@@ -1,10 +1,9 @@
 \section{Introduzione}\label{sec:Introduzione}
 
-Ancora oggi le password rappresentano il principale meccanismo di autenticazione per
-la maggior parte dei servizi informatici, dai social network fino alle piattaforme di e-commerce.
-La ragione è pratica: a differenza di token hardware o sistemi biometrici,
-una credenziale testuale non richiede dispositivi dedicati, risultando estremamente comoda per l'utente. 
-Tuttavia, questa stessa semplicità rende le password il punto debole del sistema: il \emph{Data Breach Investigations Report} di
+Le password sono ancora il principale meccanismo di autenticazione dei servizi
+informatici, dai social network all'e-commerce: a differenza di token hardware o
+sistemi biometrici, non richiedono dispositivi dedicati e sono comode per l'utente.
+Questa stessa semplicità le rende però il punto debole del sistema: il \emph{Data Breach Investigations Report} di
 Verizon~\cite{verizon2024dbir} documenta che l'uso di credenziali rubate o
 deboli è il punto d'ingresso più frequente nelle violazioni informatiche.
 
@@ -17,26 +16,21 @@ tre mesi, ha documentato i comportamenti che causano questo squilibrio, a partir
 dal riuso delle password e dalla preferenza per combinazioni facili da memorizzare.
 È proprio su queste abitudini che si fondano gli attacchi a dizionario.
 
-Nel tempo sono stati sviluppati metodi più sofisticati per generare candidati password
-e migliorare i dizionari tradizionali. Ad esempio, è stato mostrato~\cite{weir2009} 
-che modellando la struttura delle password con grammatiche probabilistiche (PCFG) si possono generare candidati
-in ordine decrescente di probabilità, ottenendo tassi di successo molto più alti
-rispetto al brute-force o alle wordlist statiche. 
-Tuttavia, anche le liste più estese (come quelle derivate dal breach
-RockYou) restano generiche e poco efficaci quando l'utente introduce
+Modellando la struttura delle password con grammatiche probabilistiche (PCFG)~\cite{weir2009}
+si possono generare candidati in ordine decrescente di probabilità, con tassi di
+successo molto più alti rispetto al brute-force o alle wordlist statiche.
+Anche le liste più estese (come quelle derivate dal breach RockYou) restano però generiche e poco efficaci quando l'utente introduce
 variazioni personali.
 
-Un ulteriore salto di qualità è avvenuto con la generazione di dizionari mirati sulla singola vittima:
-il framework TarGuess~\cite{wang2016targuess}, ad esempio, dimostra come sia possibile automatizzare
-questo processo estraendo dati personali pubblicamente accessibili
-(anagrafica, interessi, relazioni) per compromettere gli account con pochissimi tentativi.
-È esattamente a questo livello che le tecniche di \emph{Open Source
-Intelligence} (OSINT) diventano decisive per l'efficacia degli attacchi.
+Il salto di qualità successivo sono i dizionari mirati sulla singola vittima:
+il framework TarGuess~\cite{wang2016targuess} ne automatizza la generazione estraendo
+dati personali pubblicamente accessibili (anagrafica, interessi, relazioni) e
+compromette gli account con pochissimi tentativi. È a questo livello che
+l'\emph{Open Source Intelligence} (OSINT) diventa decisiva.
 
-In questo lavoro si analizza il legame tra informazioni personali esposte
-online e riduzione della sicurezza effettiva delle credenziali.
-L'obiettivo è duplice: da un lato quantificare, tramite metriche entropiche,
-la perdita di resistenza quando i dati personali entrano nel processo di
-attacco; dall'altro descrivere le pipeline di raccolta OSINT e generazione
+Questo lavoro analizza il legame tra informazioni personali esposte online e
+sicurezza effettiva delle credenziali: da un lato quantifica, tramite metriche
+entropiche, la perdita di resistenza quando i dati personali entrano
+nell'attacco; dall'altro descrive le pipeline di raccolta OSINT e generazione
 di dizionari mirati, per ricavarne contromisure concrete lato server e
 lato utente.

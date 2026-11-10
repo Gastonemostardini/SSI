@@ -4,31 +4,37 @@
 \contentsline {section}{\numberline {2}\hskip -1em.~OSINT: raccolta e analisi delle informazioni}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}\hskip -1em.~Definizione e ruolo}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}\hskip -1em.~Il ciclo di raccolta e analisi}{2}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}\hskip -1em.~Le fonti pubbliche}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}\hskip -1em.~Le fonti pubbliche}{2}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}\hskip -1em.~Dalla raccolta all'analisi}{3}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}\hskip -1em.~Aspetti etici e legali}{3}{subsection.2.5}%
-\contentsline {section}{\numberline {3}\hskip -1em.~Attacchi a dizionario: principi e funzionamento}{3}{section.3}%
-\contentsline {section}{\numberline {4}\hskip -1em.~Integrazione dell'OSINT negli attacchi a dizionario}{3}{section.4}%
-\contentsline {section}{\numberline {5}\hskip -1em.~Analisi della prevedibilità delle password}{4}{section.5}%
-\contentsline {subsection}{\numberline {5.1}\hskip -1em.~Modello teorico}{4}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}\hskip -1em.~Modello reale}{5}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}\hskip -1em.~Modello con dati su utenti}{6}{subsection.5.3}%
-\contentsline {section}{\numberline {6}\hskip -1em.~Contromisure e conclusioni}{6}{section.6}%
-\contentsline {subsection}{\numberline {6.1}\hskip -1em.~Password resistenti agli attacchi a dizionario}{6}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}\hskip -1em.~Utilizzo di password manager}{6}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}\hskip -1em.~Autenticazione a più fattori (MFA)}{6}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}\hskip -1em.~Protezione dei sistemi dai tentativi di accesso}{7}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}\hskip -1em.~Conclusioni}{7}{subsection.6.5}%
+\contentsline {section}{\numberline {3}\hskip -1em.~Attacchi a dizionario e integrazione dell'OSINT}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}\hskip -1em.~Principi e funzionamento}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}\hskip -1em.~Dizionari personalizzati con l'OSINT}{3}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}\hskip -1em.~Schemi ricorrenti nella scelta delle password}{3}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}\hskip -1em.~Strumenti: CUPP e CeWL}{4}{subsection.3.4}%
+\contentsline {paragraph}{CUPP (Common User Passwords Profiler)}{4}{section*.2}%
+\contentsline {paragraph}{CeWL (Custom Word List generator)}{4}{section*.3}%
+\contentsline {subsection}{\numberline {3.5}\hskip -1em.~Efficacia dei dizionari mirati}{4}{subsection.3.5}%
+\contentsline {section}{\numberline {4}\hskip -1em.~Analisi della prevedibilità delle password}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}\hskip -1em.~Modello teorico}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}\hskip -1em.~Modello reale}{4}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}\hskip -1em.~Modello con dati su utenti}{4}{subsection.4.3}%
+\contentsline {section}{\numberline {5}\hskip -1em.~Contromisure e conclusioni}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}\hskip -1em.~Password resistenti agli attacchi a dizionario}{5}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}\hskip -1em.~Utilizzo di password manager}{6}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}\hskip -1em.~Autenticazione a più fattori (MFA)}{6}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}\hskip -1em.~Protezione dei sistemi dai tentativi di accesso}{6}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}\hskip -1em.~Conclusioni}{6}{subsection.5.5}%
 \setcounter {tocdepth}{0}
-\contentsline {section}{\numberline {A}\hskip -1em.~Trattazione matematica}{9}{appendix.Alph1}%
-\contentsline {subsection}{\numberline {A.1}\hskip -1em.~Notazione}{9}{subsection.Alph1.1}%
-\contentsline {subsection}{\numberline {A.2}\hskip -1em.~Modello teorico}{9}{subsection.Alph1.2}%
-\contentsline {paragraph}{Entropia teorica.}{9}{section*.11}%
-\contentsline {paragraph}{Tempo di attacco.}{9}{section*.12}%
-\contentsline {subsection}{\numberline {A.3}\hskip -1em.~Modello reale}{9}{subsection.Alph1.3}%
-\contentsline {paragraph}{Entropia di Shannon.}{10}{section*.13}%
-\contentsline {paragraph}{Limite superiore.}{10}{section*.14}%
-\contentsline {paragraph}{Entropia minima.}{10}{section*.15}%
-\contentsline {subsection}{\numberline {A.4}\hskip -1em.~Modello con dati sull'utente}{10}{subsection.Alph1.4}%
-\contentsline {paragraph}{Entropia condizionata.}{10}{section*.16}%
-\contentsline {paragraph}{Informazione mutua.}{10}{section*.17}%
+\contentsline {section}{\numberline {A}\hskip -1em.~Trattazione matematica}{8}{appendix.Alph1}%
+\contentsline {subsection}{\numberline {A.1}\hskip -1em.~Notazione}{8}{subsection.Alph1.1}%
+\contentsline {subsection}{\numberline {A.2}\hskip -1em.~Modello teorico}{8}{subsection.Alph1.2}%
+\contentsline {paragraph}{Entropia teorica.}{8}{section*.8}%
+\contentsline {paragraph}{Tempo di attacco.}{8}{section*.9}%
+\contentsline {subsection}{\numberline {A.3}\hskip -1em.~Modello reale}{8}{subsection.Alph1.3}%
+\contentsline {paragraph}{Entropia di Shannon.}{9}{section*.10}%
+\contentsline {paragraph}{Limite superiore.}{9}{section*.11}%
+\contentsline {paragraph}{Entropia minima.}{9}{section*.12}%
+\contentsline {subsection}{\numberline {A.4}\hskip -1em.~Modello con dati sull'utente}{9}{subsection.Alph1.4}%
+\contentsline {paragraph}{Entropia condizionata.}{9}{section*.13}%
+\contentsline {paragraph}{Informazione mutua.}{9}{section*.14}%
