@@ -1,12 +1,10 @@
 \section{Attacchi a dizionario e integrazione dell'OSINT}\label{sec:AttacchiDizionario}
 \subsection{Principi e funzionamento}\label{sec:principi}
 Un attacco a dizionario è un attacco informatico in cui l'aggressore cerca di individuare una password o una chiave (ad esempio a partire dal suo hash) provando sistematicamente le voci di uno o più dizionari di probabili chiavi.
-
 Esso si basa su tre fasi:
 \begin{enumerate}
     \item L'attaccante crea un dizionario, cioè una lista di possibili password, spesso con nomi di animali domestici, di familiari, di personaggi della cultura pop o di squadre sportive: molte persone usano parole di questo tipo perché significative e facili da ricordare. Due sondaggi condotti da Google e Harris Poll nel 2019 negli Stati Uniti hanno rilevato che circa due persone su tre riutilizzano la stessa password per più account~\cite{googleharris2019reuse,googleharris2019checkup} e che il 59\% ha usato in una password un nome o una data di nascita, dettagli personali facili da indovinare~\cite{googleharris2019checkup}. Le parole vengono poi combinate e modificate per ottenerne varianti (\cref{sec:IntegrazioneOSINT}).
     \item Un software automatizzato usa il dizionario per violare account online oppure, nel caso più comune, per risalire alle password a partire dai loro hash sottratti a un servizio (attacco \emph{offline}).
     \item L'attaccante sfrutta i dati ottenuti, per esempio per un guadagno economico o una frode.
 \end{enumerate}
-
 L'uso di un dizionario differenzia questo attacco da quello a forza bruta, che prova tutte le combinazioni alfanumeriche possibili. Il dizionario riduce le combinazioni da provare e quindi il tempo: nella forza bruta il tempo cresce esponenzialmente con la lunghezza della password, mentre con un dizionario dipende soltanto dalla dimensione della lista.

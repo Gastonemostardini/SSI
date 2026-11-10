@@ -2,7 +2,7 @@
 % Allegato: qui vanno i dettagli matematici che appesantirebbero il testo principale.
 % Nel corpo della relazione rimandare qui con \ref{app:TrattazioneMatematica}
 % (o con \cref{app:...} alle singole sottosezioni).
-In questo allegato riprendiamo in forma più rigorosa i modelli presentati nella \cref{sec:Prevedibilita}, con le definizioni, le proprietà principali e i calcoli degli esempi.
+In questo allegato si riprendono in forma più rigorosa i modelli presentati nella \cref{sec:Prevedibilita}, con le definizioni, le proprietà principali e i calcoli degli esempi.
 
 \subsection{Notazione}\label{app:Notazione}
 \begin{itemize}
@@ -80,7 +80,7 @@ La probabilità che l'attaccante indovini al primo tentativo, scegliendo la pass
 \]
 
 \begin{example}
-    Riprendiamo l'Esempio~\ref{ex:password-comune}: \(\vert\Omega\vert = 1000\), \(P(\texttt{12345678}) = 0{,}35\) e le restanti 999 password equiprobabili, ciascuna con probabilità \(0{,}65/999\). Allora
+    Si riprenda l'Esempio~\ref{ex:password-comune}: \(\vert\Omega\vert = 1000\), \(P(\texttt{12345678}) = 0{,}35\) e le restanti 999 password equiprobabili, ciascuna con probabilità \(0{,}65/999\). Allora
     \[
         \log_2 \vert\Omega\vert \approx 9{,}97 \text{ bit}, \qquad
         H(X) \approx 7{,}41 \text{ bit}, \qquad
@@ -120,16 +120,16 @@ Si noti che \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono i
     Nell'Esempio~\ref{ex:telefono} i valori esatti sono \(H(X) = \log_2 10^9 \approx 29{,}90\) bit, \(H(X \mid D) = \log_2 10^3 \approx 9{,}97\) bit e \(I(X;D) = \log_2 10^6 \approx 19{,}93\) bit: gli arrotondamenti a \(30\), \(10\) e \(20\) bit sono corretti a meno di un decimo di bit, e l'informazione raccolta divide i tentativi per \(2^{I(X;D)} = 10^6\).
 \end{example}
 
-% Nelle sezioni precedenti abbiamo visto come funzionano gli attacchi a dizionario (\cref{sec:AttacchiDizionario}) e come l'OSINT li renda più mirati (\cref{sec:IntegrazioneOSINT}).
+% Nelle sezioni precedenti si è visto come funzionano gli attacchi a dizionario (\cref{sec:AttacchiDizionario}) e come l'OSINT li renda più mirati (\cref{sec:IntegrazioneOSINT}).
 % Resta da capire \emph{quanto} una password sia davvero difficile da indovinare.
-% In questa sezione introduciamo l'entropia, una misura dell'incertezza espressa in bit, e la usiamo per confrontare tre scenari: password scelte a caso, password scelte da persone reali e password di cui l'attaccante conosce qualche informazione sull'utente.
+% In questa sezione si introduce l'entropia, una misura dell'incertezza espressa in bit, e la si usa per confrontare tre scenari: password scelte a caso, password scelte da persone reali e password di cui l'attaccante conosce qualche informazione sull'utente.
 % Vedremo che a ogni passaggio l'entropia diminuisce, e con essa il numero di tentativi necessari a un attacco.
 
 
 % Modello di Markov e PCFG grammatiche probabilistiche
 
 % \subsection{Passphrase}
-% Sappiamo che gli umani tendenzialmente fanno schifo a inventarsi cose e che ricavano informazioni dall'ambiente etc..
+% Si sa che gli umani tendenzialmente fanno schifo a inventarsi cose e che ricavano informazioni dall'ambiente etc..
 
 % \[
 %     P(w_1,\ldots,w_k)
@@ -143,4 +143,4 @@ Si noti che \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono i
 %   pratici, 4 bit in meno = 16 volte meno tentativi. Messi insieme, schemi prevedibili e dati
 %   OSINT trasformano una ricerca impossibile in un dizionario piccolo e mirato. Concludere
 %   con il rimando alla sez. 6: le contromisure servono ad aumentare H(X|D), cioè a scegliere
-%   password che non dipendono da ciò che si sa di noi (generatori, password manager).
+%   password che non dipendono da ciò che si sa dell'utente (generatori, password manager).
