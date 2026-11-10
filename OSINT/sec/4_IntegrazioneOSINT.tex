@@ -74,7 +74,7 @@ L'utilità di questo approccio risiede nella possibilità di individuare il less
 \caption{Funzionamento generale di CeWL: dalla scansione dei contenuti web alla costruzione di una wordlist personalizzata, con alcune opzioni da riga di comando.}
 \label{fig:cewl}
 \end{figure}
-\section*{Vantaggi e limiti dei dizionari mirati rispetto a quelli generici}
+\section*{Vantaggi dei dizionari mirati rispetto a quelli generici}
 L'utilizzo di dizionari personalizzati presenta alcuni vantaggi rispetto all'impiego di liste generiche, ma la loro efficacia dipende da diversi fattori.
 \begin{itemize}[label=--]
     \item \textbf{Maggiore contestualizzazione delle parole candidate:} le informazioni OSINT permettono di individuare termini legati direttamente alla persona o all'organizzazione analizzata, rendendo la lista più pertinente rispetto a un dizionario generico.
@@ -82,7 +82,3 @@ L'utilizzo di dizionari personalizzati presenta alcuni vantaggi rispetto all'imp
     \item \textbf{Riduzione del numero di combinazioni da analizzare:} una wordlist costruita sulla base di informazioni contestuali può restringere l'insieme delle ipotesi da verificare, rispetto a una ricerca indiscriminata. Il vantaggio effettivo dipende tuttavia dalla qualità dei dati e dal metodo di verifica adottato.
     \item \textbf{Maggiore aderenza al contesto organizzativo:} strumenti come CeWL permettono di individuare termini ricorrenti nella comunicazione aziendale, mentre CUPP consente di rappresentare elementi riconducibili al profilo individuale.
 \end{itemize}
-È tuttavia necessario considerare alcuni limiti. La disponibilità di informazioni personali o aziendali non implica necessariamente che tali elementi siano stati utilizzati nella scelta delle password. Inoltre, l'efficacia di una wordlist personalizzata non può essere considerata garantita, poiché dipende dalle abitudini degli utenti, dalla robustezza delle credenziali e dalle misure di protezione adottate.
-Un'ulteriore distinzione riguarda le modalità di verifica: negli attacchi online i tentativi di autenticazione possono essere contrastati da sistemi di limitazione dei tentativi, autenticazione multifattore e meccanismi di blocco degli account (\textit{account lockout}). Nelle verifiche offline, invece, l'analisi delle password candidate avviene su archivi di hash ottenuti precedentemente, senza effettuare tentativi di accesso all'account.
-In conclusione, l'integrazione dell'OSINT negli attacchi a dizionario evidenzia come le informazioni pubblicamente disponibili possano essere trasformate in materiale utile per l'analisi della sicurezza delle credenziali. CUPP e CeWL rappresentano due esempi complementari di questa integrazione: il primo orientato alla profilazione individuale e alla generazione di varianti, il secondo all'estrazione di termini dai contenuti web. Entrambi mostrano come la personalizzazione delle wordlist possa rendere più contestuale l'attività di verifica, senza richiedere necessariamente l'impiego di algoritmi di intelligenza artificiale.
-\end{document}
