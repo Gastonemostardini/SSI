@@ -64,7 +64,7 @@ La quantità \(-\log_2 P(x)\) è detta \emph{autoinformazione} della password \(
 \paragraph{Limite superiore.}
 Per ogni distribuzione su \(\Omega\)
 \[
-    H(X) \leq \log_2 \vert\Omega\vert = L \log_2 N,
+    H(X) \leq \log_2 \vert\Omega\vert = L \log_2 N.
 \]
 
 \paragraph{Entropia minima.}
@@ -106,7 +106,7 @@ L'incertezza residua su \(X\) dopo aver osservato \(D\) è
         I(X;D) = H(X) - H(X \mid D) = \sum_{x \in \Omega} \sum_{d \in \mathcal{D}} P(x, d) \log_2 \frac{P(x, d)}{P(x) P(d)}.
     }
 \]
-Si noti che  \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono indipendenti. Infatti l'ultima espressione è la divergenza di Kullback--Leibler tra \(P(x,d)\) e \(P(x)P(d)\), che è non negativa e nulla solo quando le due distribuzioni coincidono (disuguaglianza di Gibbs). Equivalentemente \(H(X \mid D) \leq H(X)\): \emph{in media} conoscere \(D\) non aumenta l'incertezza. Per un singolo valore \(d\) può invece accadere che \(H(X \mid D = d) > H(X)\); la disuguaglianza vale sulla media pesata da \(P(d)\).
+Si noti che \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono indipendenti. Infatti l'ultima espressione è la divergenza di Kullback--Leibler tra \(P(x,d)\) e \(P(x)P(d)\), che è non negativa e nulla solo quando le due distribuzioni coincidono (disuguaglianza di Gibbs). Equivalentemente \(H(X \mid D) \leq H(X)\): \emph{in media} conoscere \(D\) non aumenta l'incertezza. Per un singolo valore \(d\) può invece accadere che \(H(X \mid D = d) > H(X)\); la disuguaglianza vale sulla media pesata da \(P(d)\).
 
 \begin{example}
     \(X\) è uniforme su \(1024 = 2^{10}\) password, divise in 16 gruppi equiprobabili da 64; \(D\) indica il gruppo che contiene la password scelta. Dato \(D\), \(X\) è uniforme sulle 64 password del gruppo, quindi
@@ -134,10 +134,10 @@ Si noti che  \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono 
 % Vedremo che a ogni passaggio l'entropia diminuisce, e con essa il numero di tentativi necessari a un attacco.
 
 
-% Modello di markov e PCFG grammatiche probabilistiche
+% Modello di Markov e PCFG grammatiche probabilistiche
 
 % \subsection{Passphrase}
-% Sappiamo che gli umani tendenzialmente fnano schifo a inventarsi cose e che ricavano informazioni dall'ambienmte etc..
+% Sappiamo che gli umani tendenzialmente fanno schifo a inventarsi cose e che ricavano informazioni dall'ambiente etc..
 
 % \[
 %     P(w_1,\ldots,w_k)
