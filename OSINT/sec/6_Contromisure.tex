@@ -8,9 +8,9 @@ Come visto nella \cref{sec:AttacchiDizionario}, un attacco a dizionario prova pe
  
 \begin{itemize}
     \item \textbf{Scegliere password lunghe.} La lunghezza conta più dei simboli speciali: il NIST (SP 800-63B-4) indica almeno 15 caratteri se la password è l'unica protezione dell'account \cite{nist80063b}.
-    \item \textbf{Usare frasi di parole casuali.} Sei parole estratte da un elenco di 7776 (metodo \emph{Diceware}) danno più di $2 \times 10^{23}$ combinazioni e sono facili da ricordare. Devono essere davvero casuali: citazioni o frasi complete si indovinano più facilmente.
+    \item \textbf{Usare frasi di parole casuali.} Sei parole estratte da un elenco di 7776 (metodo \emph{Diceware}~\cite{diceware}) danno più di $2 \times 10^{23}$ combinazioni e sono facili da ricordare. Devono essere davvero casuali: citazioni o frasi complete si indovinano più facilmente.
     \item \textbf{Non usare informazioni personali} come nomi, date o hobby, spesso visibili sui social network.
-    \item \textbf{Usare una password diversa per ogni servizio.} Una password rubata viene provata automaticamente su molti altri siti (\emph{credential stuffing}).
+    \item \textbf{Usare una password diversa per ogni servizio.} Una password rubata viene provata automaticamente su molti altri siti (\emph{credential stuffing})~\cite{owaspcredstuffing}.
 \end{itemize}
  
 \subsection{Utilizzo di password manager}\label{sec:pwd-manager}
@@ -22,9 +22,9 @@ Ricordare password lunghe e diverse è difficile. Un \textbf{password manager} �
 L'\textbf{autenticazione a più fattori} (MFA, Multi-Factor Authentication) richiede, oltre alla password, una seconda prova di identità, come un codice generato dal telefono o una chiave fisica: anche se la password viene scoperta, l'accesso resta bloccato. I metodi offrono livelli di sicurezza diversi:
  
 \begin{itemize}
-    \item \textbf{SMS:} utile ma più debole, perché il numero può essere intercettato o trasferito su una SIM controllata dall'attaccante (\emph{SIM swapping});
+    \item \textbf{SMS:} utile ma più debole, perché il numero può essere intercettato o trasferito su una SIM controllata dall'attaccante (\emph{SIM swapping})~\cite{enisa2021sim};
     \item \textbf{app di autenticazione e notifiche:} più sicure, ma un sito falso può indurre l'utente a inserire il codice o ad approvare una richiesta;
-    \item \textbf{chiavi di sicurezza fisiche e \emph{passkey}:} le più robuste, perché funzionano solo sul sito autentico.
+    \item \textbf{chiavi di sicurezza FIDO2 e \emph{passkey}:} le più robuste, perché funzionano solo sul sito autentico~\cite{webauthn}.
 \end{itemize}
  
 Conviene attivare l'MFA almeno su posta elettronica, servizi bancari e password manager.
@@ -34,9 +34,9 @@ Conviene attivare l'MFA almeno su posta elettronica, servizi bancari e password 
 Anche chi gestisce un servizio online deve difendersi. Le misure principali sono:
  
 \begin{itemize}
-    \item \textbf{limitare i tentativi di accesso}, rallentando o bloccando chi sbaglia più volte, anche con prove ``non sono un robot'';
-    \item \textbf{rifiutare le password comuni} o già comparse in furti di dati, ed evitare domande di sicurezza (``nome del tuo animale'') facili da scoprire con l'OSINT;
-    \item \textbf{conservare le password in forma protetta}, trasformate con algoritmi lenti e non reversibili (come Argon2id), mai in chiaro \cite{owaspcheatsheet};
+    \item \textbf{limitare i tentativi di accesso}, rallentando o bloccando chi sbaglia più volte, anche con prove ``non sono un robot''~\cite{nist80063b};
+    \item \textbf{rifiutare le password comuni} o già comparse in furti di dati, ed evitare domande di sicurezza (``nome del tuo animale'') facili da scoprire con l'OSINT~\cite{nist80063b};
+    \item \textbf{conservare le password in forma protetta}, trasformate con algoritmi lenti e non reversibili (come Argon2id~\cite{rfc9106}), mai in chiaro~\cite{owaspcheatsheet};
     \item \textbf{monitorare gli accessi} per individuare comportamenti sospetti, come molti tentativi falliti da un'origine insolita per l'utente, e avvisarlo.
 \end{itemize}
  
@@ -44,5 +44,3 @@ Anche chi gestisce un servizio online deve difendersi. Le misure principali sono
  
 L'OSINT permette di raccogliere e correlare dati personali pubblici fino a profilare la vittima; gli attacchi a dizionario li sfruttano provando prima le password più probabili, e l'analisi dell'entropia mostra che ogni informazione in mano all'attaccante riduce l'incertezza residua. Il filo comune è la \textbf{prevedibilità}: più una credenziale è legata alla vita e ai dati pubblici di chi la sceglie, meno resiste. Le contromisure servono quindi a scollegare la password dall'utente (lunghezza, casualità, unicità) e a limitare il danno quando viene comunque scoperta (MFA, hashing lento, limiti ai tentativi). In futuro le passkey potrebbero sostituire le password; fino ad allora, ridurne la prevedibilità resta la difesa più efficace e meno costosa.
 
-% Fonti consultate ma non citate direttamente:
-\nocite{enzoic2025, securityscientist2026, wikipedia_passwordpolicy, guptadeepak_newrules, startupdefense_nist, acefortis_nist, axonbuild_nist}

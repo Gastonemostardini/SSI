@@ -3,30 +3,33 @@
 Le password sono ancora il principale meccanismo di autenticazione dei servizi
 informatici, dai social network all'e-commerce: a differenza di token hardware o
 sistemi biometrici, non richiedono dispositivi dedicati e sono comode per l'utente.
-Questa stessa semplicità le rende però il punto debole del sistema: il \emph{Data Breach Investigations Report} di
-Verizon~\cite{verizon2024dbir} documenta che l'uso di credenziali rubate o
-deboli è il punto d'ingresso più frequente nelle violazioni informatiche.
+Questa stessa semplicità le rende però il punto debole del sistema: il \emph{Data Breach Investigations Report} 2024 di
+Verizon~\cite{verizon2024dbir} indica nell'uso di credenziali rubate l'azione
+iniziale più frequente nelle violazioni (24\%).
 
 Il problema di fondo è che le password non vengono scelte in modo uniforme.
-Bonneau~\cite{bonneau2012}, analizzando un dataset anonimizzato di 70 milioni di
-password Yahoo, ha mostrato che la distribuzione reale delle scelte umane è fortemente
+Bonneau~\cite{bonneau2012}, analizzando le password anonimizzate di circa 70 milioni
+di utenti Yahoo, ha mostrato che la distribuzione reale delle scelte umane è fortemente
 sbilanciata verso pochi schemi ricorrenti, e lo studio su larga scala di
 Flor\^{e}ncio e Herley~\cite{florencio2007}, condotto su circa 500.000 utenti per
-tre mesi, ha documentato i comportamenti che causano questo squilibrio, a partire
-dal riuso delle password e dalla preferenza per combinazioni facili da memorizzare.
+tre mesi, ha documentato abitudini coerenti con questo squilibrio: password deboli,
+spesso di sole lettere minuscole, e riusate su più siti.
 È proprio su queste abitudini che si fondano gli attacchi a dizionario.
 
 Modellando la struttura delle password con grammatiche probabilistiche (PCFG)~\cite{weir2009}
-si possono generare candidati in ordine decrescente di probabilità, con tassi di
-successo molto più alti rispetto al brute-force o alle wordlist statiche.
-Anche le liste più estese (come quelle derivate dal breach RockYou) restano però generiche e poco efficaci quando l'utente introduce
+si possono generare candidati in ordine decrescente di probabilità, craccando dal
+28\% al 129\% di password in più rispetto a John the Ripper.
+Anche le liste più estese, come i 32 milioni di password del breach
+RockYou~\cite{imperva2010rockyou}, restano però generiche e poco efficaci quando l'utente introduce
 variazioni personali.
 
 Il salto di qualità successivo sono i dizionari mirati sulla singola vittima:
-il framework TarGuess~\cite{wang2016targuess} ne automatizza la generazione estraendo
-dati personali pubblicamente accessibili (anagrafica, interessi, relazioni) e
-compromette gli account con pochissimi tentativi. È a questo livello che
-l'\emph{Open Source Intelligence} (OSINT) diventa decisiva.
+il framework TarGuess~\cite{wang2016targuess} ne automatizza la generazione a partire
+da dati personali della vittima (nome, data di nascita, telefono, email) o da una
+sua password trapelata da un altro servizio: entro 100 tentativi indovina oltre il
+73\% delle password degli utenti comuni. TarGuess presuppone però che questi dati
+siano già noti: è nel raccoglierli che l'\emph{Open Source Intelligence} (OSINT)
+diventa decisiva.
 
 Questo lavoro analizza il legame tra informazioni personali esposte online e
 sicurezza effettiva delle credenziali: da un lato quantifica, tramite metriche

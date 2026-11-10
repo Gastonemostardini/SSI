@@ -1,6 +1,6 @@
 \section{Analisi della prevedibilità delle password}\label{sec:Prevedibilita}
 
-L'entropia misura \emph{quanto} una password sia difficile da indovinare: qui ne diamo l'intuizione, la trattazione formale è nell'Allegato~\ref{app:TrattazioneMatematica}.
+L'entropia misura \emph{quanto} una password sia difficile da indovinare: qui ne diamo l'intuizione, per chi fosse interessato una trattazione più formale è nell'Allegato~\ref{app:TrattazioneMatematica}, da considerarsi completamente esterna a questo documento.
 \subsection{Modello teorico}
 Con \(N\) caratteri disponibili e lunghezza \(L\) esistono \(N^L\) password; se la scelta è del tutto casuale, l'entropia teorica è
 \[
@@ -24,7 +24,7 @@ Su questo si basano gli attacchi a dizionario più semplici: provare per prime l
 \begin{example}\label{ex:password-comune}
     Su 1000 password possibili, sappiamo che \texttt{12345678} è usata dal \(35\%\) degli utenti: provandola per prima, la probabilità di indovinare al primo tentativo sale da una su $1000$ al $35\%$.
 \end{example}
-L'\emph{entropia minima} \(H_{\infty}(X)\) misura proprio questo fenomeno: tiene conto solo della password più probabile, cioè dell'anello più debole della catena. Per questo l'entropia di Shannon, che è una media, sovrastima la resistenza agli attacchi, come Bonneau~\cite{bonneau2012} ha mostrato su dati reali.
+L'\emph{entropia minima} \(H_{\infty}(X)\) misura proprio questo fenomeno: tiene conto solo della password più probabile, cioè dell'anello più debole della catena. Per questo l'entropia di Shannon, che è una media, sovrastima la resistenza agli attacchi: come osserva Bonneau~\cite{bonneau2012}, non è direttamente legata alla difficoltà di indovinare una password.
 
 \subsection{Modello con dati su utenti}
 Ogni informazione in possesso dell'attaccante, come la lingua parlata o l'anno di iscrizione a un servizio, può essere correlata alla password.

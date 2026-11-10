@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1}\hskip -1em.~Introduzione}{2}{section.1}%
 \contentsline {section}{\numberline {2}\hskip -1em.~OSINT: raccolta e analisi delle informazioni}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}\hskip -1em.~Definizione e ruolo}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}\hskip -1em.~Il ciclo di raccolta e analisi}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}\hskip -1em.~Il processo di raccolta e analisi}{2}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}\hskip -1em.~Le fonti pubbliche}{2}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}\hskip -1em.~Dalla raccolta all'analisi}{3}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}\hskip -1em.~Aspetti etici e legali}{3}{subsection.2.5}%
