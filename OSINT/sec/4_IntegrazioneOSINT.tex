@@ -3,26 +3,6 @@ Mentre i dizionari tradizionali usano elenchi generici di parole comuni, l'OSINT
 
 Le informazioni raccolte possono riguardare la sfera personale, come nomi di familiari, animali domestici, hobby e date significative, oppure quella professionale, come progetti, marchi, tecnologie e terminologia aziendale. Dall'analisi di questi dati emergono parole chiave legate al contesto dell'individuo o dell'organizzazione, utilizzabili come base per wordlist personalizzate.
 
-\subsection{Schemi ricorrenti nella scelta delle password}
-L'OSINT fornisce gli ``ingredienti'' informativi, mentre specifiche tecniche applicano regole di combinazione e trasformazione che riproducono gli schemi ricorrenti nella scelta delle password:
-\begin{enumerate}
-    \item \textbf{Concatenazione e associazione di date:} parole significative combinate con riferimenti temporali, ad esempio elementi familiari o interessi personali seguiti da sequenze numeriche.
-    \item \textbf{Sostituzione di caratteri (\textit{Leetspeak}):} lettere trasformate in numeri o simboli visivamente simili, come \texttt{e} in \texttt{3}, \texttt{a} in \texttt{@} e \texttt{s} in \texttt{\$}.
-    \item \textbf{Prefissi e suffissi:} caratteri, numeri o simboli aggiunti alle parole di partenza, spesso per soddisfare le policy di complessità delle password.
-    \item \textbf{Word mangling e generazione basata su regole (\textit{rule-based generation}):} applicazione automatizzata di regole predefinite che combinano le trasformazioni precedenti e le modifiche della capitalizzazione sulle parole di una lista iniziale.
-    \item \textbf{Modellazione probabilistica:} modelli statistici, come quelli di Markov~\cite{narayanan2005}, che stimano la probabilità di determinate sequenze di caratteri sulla base di schemi già osservati.
-\end{enumerate}
-Si distinguono inoltre le tecniche di riconoscimento dei pattern (\textit{pattern recognition}), che identificano regolarità nei dati, e di generazione basata su pattern (\textit{pattern-based generation}), che le usano per produrre nuove combinazioni.
-Ad eccezione della modellazione probabilistica, che stima le probabilità a partire da password già osservate (come le grammatiche probabilistiche~\cite{weir2009} citate nell'introduzione), queste tecniche non richiedono intelligenza artificiale o machine learning: molti strumenti applicano semplici regole deterministiche di trasformazione e combinazione delle stringhe.
-
-\subsection{Strumenti: CUPP e CeWL}
-Alcune di queste operazioni sono automatizzate da strumenti specifici, come CUPP e CeWL, che adottano approcci differenti.
-
-\paragraph{CUPP (Common User Passwords Profiler)}
-CUPP~\cite{cupp} è uno strumento open source in Python che genera wordlist personalizzate a partire dalle informazioni su un individuo. Tramite una procedura interattiva l'operatore inserisce nomi, soprannomi, date significative, interessi e altri elementi rilevanti, che diventano le parole di partenza. Lo strumento vi applica le operazioni di \textit{word mangling} descritte sopra: combinazione di parole, variazione dei formati numerici, modifiche della capitalizzazione e alcune sostituzioni di caratteri. Permette inoltre di elaborare wordlist esistenti e di generare varianti da parole fornite dall'operatore.
-
-\paragraph{CeWL (Custom Word List generator)}
-CeWL~\cite{cewl} è uno strumento open source in Ruby che, a differenza di CUPP, non si basa su dati inseriti dall'operatore ma analizza direttamente le pagine di un sito web, seguendo i collegamenti interni entro una profondità configurabile. Estrae le parole dai contenuti testuali e ne ricava una wordlist, in cui possono emergere termini specifici dell'organizzazione come nomi di prodotti, servizi, marchi, progetti e tecnologie; non esegue un'analisi semantica né individua le password dei dipendenti. Il lessico così ottenuto può essere impiegato in attività autorizzate di verifica della robustezza delle credenziali. Il funzionamento e le principali opzioni da riga di comando sono riassunti in \cref{fig:cewl}.
 \begin{figure*}[t]
 \centering
 \begin{tikzpicture}[
@@ -56,6 +36,35 @@ CeWL~\cite{cewl} è uno strumento open source in Ruby che, a differenza di CUPP,
 \end{tikzpicture}
 \caption{Funzionamento generale di CeWL: dalla scansione dei contenuti web alla costruzione di una wordlist personalizzata, con alcune opzioni da riga di comando.}
 \label{fig:cewl}
+\end{figure*}
+
+\subsection{Schemi ricorrenti nella scelta delle password}
+L'OSINT fornisce gli ``ingredienti'' informativi, mentre specifiche tecniche applicano regole di combinazione e trasformazione che riproducono gli schemi ricorrenti nella scelta delle password:
+\begin{enumerate}
+    \item \textbf{Concatenazione e associazione di date:} parole significative combinate con riferimenti temporali, ad esempio elementi familiari o interessi personali seguiti da sequenze numeriche.
+    \item \textbf{Sostituzione di caratteri (\textit{Leetspeak}):} lettere trasformate in numeri o simboli visivamente simili, come \texttt{e} in \texttt{3}, \texttt{a} in \texttt{@} e \texttt{s} in \texttt{\$}.
+    \item \textbf{Prefissi e suffissi:} caratteri, numeri o simboli aggiunti alle parole di partenza, spesso per soddisfare le policy di complessità delle password.
+    \item \textbf{Word mangling e generazione basata su regole (\textit{rule-based generation}):} applicazione automatizzata di regole predefinite che combinano le trasformazioni precedenti e le modifiche della capitalizzazione sulle parole di una lista iniziale.
+    \item \textbf{Modellazione probabilistica:} modelli statistici, come quelli di Markov~\cite{narayanan2005}, che stimano la probabilità di determinate sequenze di caratteri sulla base di schemi già osservati.
+\end{enumerate}
+Si distinguono inoltre le tecniche di riconoscimento dei pattern (\textit{pattern recognition}), che identificano regolarità nei dati, e di generazione basata su pattern (\textit{pattern-based generation}), che le usano per produrre nuove combinazioni.
+Ad eccezione della modellazione probabilistica, che stima le probabilità a partire da password già osservate (come le grammatiche probabilistiche~\cite{weir2009} citate nell'introduzione), queste tecniche non richiedono intelligenza artificiale o machine learning: molti strumenti applicano semplici regole deterministiche di trasformazione e combinazione delle stringhe.
+
+\subsection{Strumenti: CUPP e CeWL}
+Alcune di queste operazioni sono automatizzate da strumenti specifici, come CUPP e CeWL, che adottano approcci differenti.
+
+\paragraph{CUPP (Common User Passwords Profiler)}
+CUPP~\cite{cupp} è uno strumento open source in Python che genera wordlist personalizzate a partire dalle informazioni su un individuo. Tramite una procedura interattiva l'operatore inserisce nomi, soprannomi, date significative, interessi e altri elementi rilevanti, che diventano le parole di partenza. Lo strumento vi applica le operazioni di \textit{word mangling} descritte sopra: combinazione di parole, variazione dei formati numerici, modifiche della capitalizzazione e alcune sostituzioni di caratteri. Permette inoltre di elaborare wordlist esistenti e di generare varianti da parole fornite dall'operatore.
+
+\paragraph{CeWL (Custom Word List generator)}
+CeWL~\cite{cewl} è uno strumento open source in Ruby che, a differenza di CUPP, non si basa su dati inseriti dall'operatore ma analizza direttamente le pagine di un sito web, seguendo i collegamenti interni entro una profondità configurabile. Estrae le parole dai contenuti testuali e ne ricava una wordlist, in cui possono emergere termini specifici dell'organizzazione come nomi di prodotti, servizi, marchi, progetti e tecnologie; non esegue un'analisi semantica né individua le password dei dipendenti. Il lessico così ottenuto può essere impiegato in attività autorizzate di verifica della robustezza delle credenziali. Il funzionamento e le principali opzioni da riga di comando sono riassunti in \cref{fig:cewl}.
+
+% Figura della \cref{sec:Prevedibilita}: definita qui perché il float finisca in cima alla pagina della Sez. 4 e non sulla stessa pagina di fig:cewl.
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/hive-password-table-2024.png}
+    \caption{Tempo necessario per individuare con la forza bruta una password casuale, in funzione della lunghezza e dei caratteri ammessi (12 GPU RTX 4090, password salvate con bcrypt). Fonte: Hive Systems~\cite{neskey2024passwords}, \url{https://www.hivesystems.com/password}.}
+    \label{fig:tempi-cracking-real}
 \end{figure*}
 
 \subsection{Efficacia dei dizionari mirati}

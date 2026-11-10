@@ -8,15 +8,7 @@ Con \(N\) caratteri disponibili e lunghezza \(L\) esistono \(N^L\) password; se 
 \]
 e nel caso peggiore servono \(2^H\) tentativi per indovinarla.
 La \cref{fig:tempi-cracking-real} mostra il tempo necessario al variare della lunghezza e dei caratteri ammessi.
-% [MOCKUP] Immagine provvisoria, da sostituire con quella definitiva.
-%   L'immagine vera DEVE avere la fonte: citarla nella caption con \cite{...} e aggiungerla a main.bib.
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\linewidth]{images/image.png}
-    \caption{Tempo necessario per individuare una password casuale, in funzione della lunghezza e dei caratteri ammessi. \TODO{MOCKUP: sostituire con l'immagine definitiva e indicarne la fonte.}}
-    \label{fig:tempi-cracking-real}
-\end{figure}
-Queste stime presuppongono GPU moderne, un attacco \emph{offline} (senza limiti al numero di tentativi), un algoritmo di verifica ``veloce'' e, soprattutto, password scelte a caso: sono quindi un limite superiore, il caso migliore per chi si difende.
+Queste stime presuppongono un attacco \emph{offline} a forza bruta con 12 GPU RTX 4090 contro password scelte a caso e salvate con bcrypt a costo basso: con un hash veloce come MD5 i tempi sarebbero di molti ordini di grandezza inferiori. Sono quindi un limite superiore, il caso migliore per chi si difende.
 \subsection{Modello reale}
 In realtà le password non sono equiprobabili: parole di senso compiuto, schemi ricorrenti (\cref{sec:IntegrazioneOSINT}), dati personali e riuso rendono \texttt{12345678} molto più probabile di \texttt{-B9\&8uò'}.
 L'entropia \emph{di Shannon} \(H(X)\) della password scelta \(X\) misura allora la ``difficoltà'' media delle password, pesata sulla probabilità che vengano scelte, ed è sempre minore o uguale a quella teorica.
