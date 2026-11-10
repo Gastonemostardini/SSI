@@ -4,7 +4,7 @@ Gli attacchi a dizionario, soprattutto quando sfruttano le informazioni personal
  
 \subsection{Password resistenti agli attacchi a dizionario}\label{sec:pwd-resistenti}
  
-Un attacco a dizionario non prova tutte le combinazioni possibili, ma solo quelle più probabili: parole comuni, password già trapelate in precedenti furti di dati, nomi e date di nascita, anche con le modifiche più note (come \texttt{a}$\rightarrow$\texttt{@} o l'aggiunta di \texttt{123!}). Per questo una password come \texttt{P@ssw0rd!}, pur sembrando complicata, è debole. Le regole più efficaci sono:
+Come visto nella \cref{sec:IntegrazioneOSINT}, un attacco a dizionario prova per prime le password più probabili, comprese quelle già trapelate e le loro varianti più note. Per questo una password come \texttt{P@ssw0rd!}, pur sembrando complicata, è debole. Le regole più efficaci sono:
  
 \begin{itemize}
     \item \textbf{Scegliere password lunghe.} La lunghezza conta più dei simboli speciali: le linee guida NIST (SP 800-63B-4) indicano almeno 15 caratteri quando la password è l'unica protezione dell'account \cite{nist80063b}.
@@ -15,7 +15,7 @@ Un attacco a dizionario non prova tutte le combinazioni possibili, ma solo quell
  
 \subsection{Utilizzo di password manager}\label{sec:pwd-manager}
  
-Ricordare a mente password lunghe e diverse diventa difficile. Un \textbf{password manager} è un programma che le conserva in un archivio cifrato, protetto da un'unica ``password principale''. Può creare password casuali, avvisa se sono deboli o sono state rubate e le inserisce automaticamente solo sul sito corretto. Il rischio è che tutto dipenda da un solo accesso: la password principale deve quindi essere lunga, usata solo per questo scopo e protetta da un secondo fattore di verifica.
+Ricordare a mente password lunghe e diverse diventa difficile. Un \textbf{password manager} è un programma che le conserva in un archivio cifrato, protetto da un'unica ``password principale''. Può creare password casuali, avvisa se sono deboli o sono state rubate e le inserisce automaticamente solo sul sito corretto. Il rischio è che tutto dipenda da un solo accesso: la password principale deve quindi essere lunga e usata solo per questo scopo.
  
 \subsection{Autenticazione a più fattori (MFA)}\label{sec:mfa}
  

@@ -1,10 +1,10 @@
 \section{Integrazione dell'OSINT negli attacchi a dizionario}\label{sec:IntegrazioneOSINT}
 \textit{Profilazione, generazione mirata con CUPP e CeWL ed efficacia dei dizionari personalizzati}
-Mentre i dizionari tradizionali utilizzano elenchi generici di parole comuni, l’integrazione dell’Open Source Intelligence (OSINT) permette di creare dizionari personalizzati, basati sulle informazioni personali e professionali degli utenti.
+Mentre i dizionari tradizionali utilizzano elenchi generici di parole comuni, l’integrazione dell’OSINT (\cref{sec:OSINT}) permette di creare dizionari personalizzati, basati sulle informazioni personali e professionali degli utenti.
 
 \subsection*{Utilizzo delle informazioni OSINT per costruire dizionari personalizzati}
 
-La ricognizione OSINT raccoglie informazioni pubblicamente disponibili da social network, blog, forum e siti aziendali. Queste possono riguardare la sfera personale, come nomi di familiari, animali domestici, hobby e date significative, oppure quella professionale, come progetti, marchi, tecnologie e terminologia aziendale.
+Le informazioni raccolte con l'OSINT possono riguardare la sfera personale, come nomi di familiari, animali domestici, hobby e date significative, oppure quella professionale, come progetti, marchi, tecnologie e terminologia aziendale.
 
 L’analisi di questi dati consente di individuare parole chiave legate al contesto dell’individuo o dell’organizzazione, utilizzabili come base per la creazione di wordlist personalizzate.
 \section*{Individuazione di schemi ricorrenti nella scelta delle password}
@@ -14,30 +14,22 @@ Tra le principali tecniche si possono distinguere:
     \item \textbf{Concatenazione e associazione di date:} combinazione di parole significative e riferimenti temporali. Gli utenti possono, ad esempio, associare elementi familiari o interessi personali a sequenze numeriche.
     \item \textbf{Sostituzione di caratteri (\textit{Leetspeak}):} trasformazione di lettere in numeri o simboli visivamente simili, secondo convenzioni ricorrenti. Tra gli esempi più comuni figurano la sostituzione della lettera \texttt{e} con \texttt{3}, della \texttt{a} con \texttt{@} e della \texttt{s} con \texttt{\$}.
     \item \textbf{Prefissi e suffissi:} aggiunta di sequenze di caratteri, numeri o simboli alle parole di partenza, spesso per soddisfare i requisiti formali delle policy di complessità delle password.
-    \item \textbf{Word mangling:} applicazione di trasformazioni lessicali alle parole, attraverso modifiche della capitalizzazione, aggiunta di caratteri e sostituzione di lettere.
-    \item \textbf{Generazione basata su regole (\textit{Rule-based generation}):} applicazione automatizzata di regole predefinite per combinare e modificare le parole di una lista iniziale.
+    \item \textbf{Word mangling e generazione basata su regole (\textit{rule-based generation}):} applicazione automatizzata di regole predefinite che combinano le trasformazioni precedenti, insieme alle modifiche della capitalizzazione, sulle parole di una lista iniziale.
     \item \textbf{Modellazione probabilistica:} utilizzo di modelli statistici, come i modelli di Markov, per rappresentare la probabilità di determinate sequenze di caratteri sulla base di schemi precedentemente osservati.
 \end{enumerate}
 È importante distinguere tra le tecniche di riconoscimento dei pattern (\textit{pattern recognition}), che identificano regolarità nei dati, e quelle di generazione basata su pattern (\textit{pattern-based generation}), che utilizzano tali regolarità per produrre nuove combinazioni.
-Queste tecniche non implicano necessariamente l'utilizzo di intelligenza artificiale o machine learning: molti strumenti operano attraverso semplici regole deterministiche di trasformazione e combinazione delle stringhe.
+Ad eccezione della modellazione probabilistica, che stima le probabilità a partire da password già osservate (come le grammatiche probabilistiche~\cite{weir2009} citate nell'introduzione), queste tecniche non richiedono intelligenza artificiale o machine learning: molti strumenti operano attraverso semplici regole deterministiche di trasformazione e combinazione delle stringhe.
 Per automatizzare alcune di queste operazioni esistono strumenti specifici, tra cui CUPP e CeWL, che adottano approcci differenti alla costruzione di wordlist personalizzate.
 \subsection*{1. CUPP (Common User Passwords Profiler)}
 CUPP è uno strumento open source scritto in Python, progettato per generare wordlist personalizzate a partire da informazioni associate a un determinato profilo individuale.
 Il suo funzionamento si basa principalmente su una procedura interattiva, nella quale vengono inserite informazioni quali nomi, soprannomi, date significative, interessi e altri elementi potenzialmente rilevanti. Lo strumento utilizza questi dati come parole di partenza per applicare combinazioni e trasformazioni automatiche.
-Tra le tecniche implementate figurano la combinazione di parole, la variazione dei formati numerici, le modifiche della capitalizzazione e alcune sostituzioni di caratteri. Queste operazioni rientrano nella categoria del \textit{word mangling}, ovvero l'insieme delle trasformazioni applicabili a parole esistenti per ottenere varianti differenti.
+Tra le tecniche implementate figurano la combinazione di parole, la variazione dei formati numerici, le modifiche della capitalizzazione e alcune sostituzioni di caratteri. Si tratta delle operazioni di \textit{word mangling} descritte sopra.
 CUPP mette inoltre a disposizione funzionalità per elaborare wordlist già esistenti e generare varianti a partire da parole fornite dall'operatore.
-È importante precisare che CUPP non utilizza necessariamente algoritmi di machine learning o modelli predittivi: la generazione avviene principalmente attraverso regole e trasformazioni predefinite.
 \subsection*{2. CeWL (Custom Word List generator)}
 CeWL è uno strumento open source scritto in Ruby, orientato all'estrazione di termini dai contenuti pubblicati sul web.
 A differenza di CUPP, che si basa principalmente su informazioni inserite dall'operatore, CeWL analizza direttamente le pagine di un sito web, seguendo i collegamenti interni entro una profondità configurabile.
-Durante la scansione (\cref{fig:cewl}), lo strumento estrae le parole presenti nei contenuti testuali delle pagine e costruisce una lista lessicale associata al sito analizzato. Possono così emergere termini specifici dell'organizzazione, come nomi di prodotti, servizi, marchi, progetti e tecnologie.
-Tra le principali opzioni disponibili figurano:
-\begin{itemize}
-    \item \texttt{-d}: permette di configurare la profondità della scansione delle pagine web;
-    \item \texttt{-m}: stabilisce la lunghezza minima delle parole da includere nella lista;
-    \item \texttt{-e}: consente di raccogliere gli indirizzi e-mail individuati durante la scansione;
-    \item \texttt{--with-numbers}: permette di includere anche le parole che contengono cifre, oltre a quelle composte da sole lettere.
-\end{itemize}
+Durante la scansione, lo strumento estrae le parole presenti nei contenuti testuali delle pagine e costruisce una lista lessicale associata al sito analizzato. Possono così emergere termini specifici dell'organizzazione, come nomi di prodotti, servizi, marchi, progetti e tecnologie.
+Il funzionamento e le principali opzioni da riga di comando sono riassunti in \cref{fig:cewl}.
 CeWL non esegue automaticamente un'analisi semantica approfondita dei contenuti né individua necessariamente le password utilizzate dai dipendenti. La sua funzione consiste nell'estrarre termini dai contenuti web e organizzarli in una wordlist personalizzata.
 L'utilità di questo approccio risiede nella possibilità di individuare il lessico caratteristico di un'organizzazione, che può essere successivamente impiegato nell'ambito di attività autorizzate di verifica della robustezza delle credenziali.
 \begin{figure*}[t]
@@ -74,11 +66,5 @@ L'utilità di questo approccio risiede nella possibilità di individuare il less
 \caption{Funzionamento generale di CeWL: dalla scansione dei contenuti web alla costruzione di una wordlist personalizzata, con alcune opzioni da riga di comando.}
 \label{fig:cewl}
 \end{figure*}
-\section*{Vantaggi dei dizionari mirati rispetto a quelli generici}
-L'utilizzo di dizionari personalizzati presenta alcuni vantaggi rispetto all'impiego di liste generiche, ma la loro efficacia dipende da diversi fattori.
-\begin{itemize}[label=--]
-    \item \textbf{Maggiore contestualizzazione delle parole candidate:} le informazioni OSINT permettono di individuare termini legati direttamente alla persona o all'organizzazione analizzata, rendendo la lista più pertinente rispetto a un dizionario generico.
-    \item \textbf{Individuazione di schemi prevedibili:} le tecniche di trasformazione possono rappresentare abitudini ricorrenti, come l'aggiunta di date, simboli e numeri o la sostituzione di caratteri. Queste operazioni consentono di considerare anche password che, pur rispettando formalmente i requisiti di complessità, seguono strutture prevedibili.
-    \item \textbf{Riduzione del numero di combinazioni da analizzare:} una wordlist costruita sulla base di informazioni contestuali può restringere l'insieme delle ipotesi da verificare, rispetto a una ricerca indiscriminata. Il vantaggio effettivo dipende tuttavia dalla qualità dei dati e dal metodo di verifica adottato.
-    \item \textbf{Maggiore aderenza al contesto organizzativo:} strumenti come CeWL permettono di individuare termini ricorrenti nella comunicazione aziendale, mentre CUPP consente di rappresentare elementi riconducibili al profilo individuale.
-\end{itemize}
+\section*{Efficacia dei dizionari mirati}
+Rispetto a una lista generica, un dizionario costruito con l'OSINT restringe le ipotesi a quelle legate alla persona o all'organizzazione analizzata, riducendo il numero di combinazioni da provare (\cref{sec:AttacchiDizionario}). Il vantaggio effettivo dipende però dalla qualità dei dati raccolti e dal metodo di verifica adottato: informazioni errate, obsolete o riferite a omonimi (\cref{sec:OSINT}) producono candidati inutili e annullano il beneficio della personalizzazione.

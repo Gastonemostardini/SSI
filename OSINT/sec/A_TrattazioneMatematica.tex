@@ -41,14 +41,14 @@ Se l'attaccante prova \(v\) password al secondo, il tempo necessario nel caso pe
 \[
     T = \frac{2^H}{v}.
 \]
-È questa la grandezza riportata in \cref{fig:tempi-cracking-real}, calcolata per un valore di \(v\) tipico di un attacco \emph{offline} con GPU moderne contro un algoritmo di verifica veloce.
+È questa la grandezza riportata in \cref{fig:tempi-cracking-real}, con le ipotesi su \(v\) descritte nella \cref{sec:Prevedibilita}.
 \begin{example}
     Con \(N = 94\) (caratteri stampabili) e \(L = 8\) si ha \(H = 8 \log_2 94 \approx 52{,}4\) bit, cioè circa \(6 \cdot 10^{15}\) password. Con \(v = 10^{10}\) tentativi al secondo servono \(T \approx 6 \cdot 10^{5}\) secondi, circa una settimana.
 \end{example}
 Nel caso peggiore servono sempre \(\vert\Omega\vert\) tentativi, qualunque sia la distribuzione. Il tempo \emph{atteso}, circa \(T/2\), è invece massimo quando la scelta è completamente casuale, perché nessuna distribuzione su \(\Omega\) ha entropia maggiore di quella uniforme: è quindi un limite massimo al tempo medio di attacco.
 
 \subsection{Modello reale}\label{app:ModelloReale}
-Le password reali non sono scelte in modo uniforme: i fattori di prevedibilità (parole di senso compiuto, schemi ricorrenti, dati personali, riuso) concentrano la probabilità su una piccola parte di \(\Omega\). La distribuzione delle probabilità di \(X\) quindi non è più uniforme e va considerata generica.
+Le password reali non sono scelte in modo uniforme: i fattori di prevedibilità visti nella \cref{sec:Prevedibilita} concentrano la probabilità su una piccola parte di \(\Omega\). La distribuzione delle probabilità di \(X\) quindi non è più uniforme e va considerata generica.
 
 \paragraph{Entropia di Shannon.}
 La quantità \(-\log_2 P(x)\) è detta \emph{autoinformazione} della password \(x\): vale pochi bit se \(x\) è molto probabile, molti se è rara. L'entropia di \(X\) ne è il valore atteso:
@@ -90,7 +90,7 @@ La probabilità che l'attaccante indovini al primo tentativo, scegliendo la pass
 \end{example}
 
 \subsection{Modello con dati sull'utente}\label{app:ModelloDati}
-Sia \(D\) l'informazione sull'utente nota all'attaccante (ad esempio la lingua parlata o l'anno di iscrizione a un servizio). In generale \(X\) e \(D\) non sono indipendenti: osservare \(D = d\) cambia la distribuzione della password da \(P(x)\) a \(P(x \mid d)\).
+Sia \(D\) l'informazione sull'utente nota all'attaccante. In generale \(X\) e \(D\) non sono indipendenti: osservare \(D = d\) cambia la distribuzione della password da \(P(x)\) a \(P(x \mid d)\).
 
 \paragraph{Entropia condizionata.}
 L'incertezza residua su \(X\) dopo aver osservato \(D\) è
@@ -117,15 +117,7 @@ Si noti che \(I(X;D) \geq 0\), con uguaglianza se e solo se \(X\) e \(D\) sono i
 \end{example}
 
 \begin{example}
-    Riprendiamo l'Esempio~\ref{ex:telefono}. \(X\) è uniforme sui \(10^9\) numeri di cellulare (10 cifre, la prima è sempre 3) e \(D\) sono le prime 7 cifre, di cui 6 libere. Dato \(D\), restano \(10^3\) numeri equiprobabili:
-    \[
-        H(X) = \log_2 10^9 \approx 29{,}90 \text{ bit}, \qquad
-        H(X \mid D) = \log_2 10^3 \approx 9{,}97 \text{ bit},
-    \]
-    \[
-        I(X;D) = \log_2 10^6 \approx 19{,}93 \text{ bit}.
-    \]
-    I valori arrotondati \(30\), \(10\) e \(20\) bit usati nel testo principale sono quindi corretti a meno di un decimo di bit. In termini di tentativi, l'informazione raccolta li divide per \(2^{I(X;D)} = 10^6\).
+    Nell'Esempio~\ref{ex:telefono} i valori esatti sono \(H(X) = \log_2 10^9 \approx 29{,}90\) bit, \(H(X \mid D) = \log_2 10^3 \approx 9{,}97\) bit e \(I(X;D) = \log_2 10^6 \approx 19{,}93\) bit: gli arrotondamenti a \(30\), \(10\) e \(20\) bit sono corretti a meno di un decimo di bit, e l'informazione raccolta divide i tentativi per \(2^{I(X;D)} = 10^6\).
 \end{example}
 
 % Nelle sezioni precedenti abbiamo visto come funzionano gli attacchi a dizionario (\cref{sec:AttacchiDizionario}) e come l'OSINT li renda più mirati (\cref{sec:IntegrazioneOSINT}).
