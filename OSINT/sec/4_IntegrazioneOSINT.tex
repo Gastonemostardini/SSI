@@ -30,13 +30,13 @@ CUPP mette inoltre a disposizione funzionalità per elaborare wordlist già esis
 \subsection*{2. CeWL (Custom Word List generator)}
 CeWL è uno strumento open source scritto in Ruby, orientato all'estrazione di termini dai contenuti pubblicati sul web.
 A differenza di CUPP, che si basa principalmente su informazioni inserite dall'operatore, CeWL analizza direttamente le pagine di un sito web, seguendo i collegamenti interni entro una profondità configurabile.
-Durante la scansione, lo strumento estrae le parole presenti nei contenuti testuali delle pagine e costruisce una lista lessicale associata al sito analizzato. Possono così emergere termini specifici dell'organizzazione, come nomi di prodotti, servizi, marchi, progetti e tecnologie.
+Durante la scansione (\cref{fig:cewl}), lo strumento estrae le parole presenti nei contenuti testuali delle pagine e costruisce una lista lessicale associata al sito analizzato. Possono così emergere termini specifici dell'organizzazione, come nomi di prodotti, servizi, marchi, progetti e tecnologie.
 Tra le principali opzioni disponibili figurano:
 \begin{itemize}
     \item \texttt{-d}: permette di configurare la profondità della scansione delle pagine web;
     \item \texttt{-m}: stabilisce la lunghezza minima delle parole da includere nella lista;
     \item \texttt{-e}: consente di raccogliere gli indirizzi e-mail individuati durante la scansione;
-    \item \texttt{--with-numbers}: permette di includere varianti numeriche dei termini estratti.
+    \item \texttt{--with-numbers}: permette di includere anche le parole che contengono cifre, oltre a quelle composte da sole lettere.
 \end{itemize}
 CeWL non esegue automaticamente un'analisi semantica approfondita dei contenuti né individua necessariamente le password utilizzate dai dipendenti. La sua funzione consiste nell'estrarre termini dai contenuti web e organizzarli in una wordlist personalizzata.
 L'utilità di questo approccio risiede nella possibilità di individuare il lessico caratteristico di un'organizzazione, che può essere successivamente impiegato nell'ambito di attività autorizzate di verifica della robustezza delle credenziali.
@@ -65,7 +65,7 @@ L'utilità di questo approccio risiede nella possibilità di individuare il less
 \node[opt, right=1.4cm of site] (e) {\textbf{\texttt{-e}}\\{\small Estrazione degli indirizzi e-mail}};
 \node[opt, right=1.4cm of crawl] (d) {\textbf{\texttt{-d}}\\{\small Profondità di scansione}};
 \node[opt, right=1.4cm of filter] (m) {\textbf{\texttt{-m}}\\{\small Lunghezza minima delle parole}};
-\node[opt, right=1.4cm of wl] (n) {\textbf{\texttt{--with-numbers}}\\{\small Inclusione di varianti numeriche}};
+\node[opt, right=1.4cm of wl] (n) {\textbf{\texttt{--with-numbers}}\\{\small Inclusione di parole con cifre}};
 \draw[link] (site) -- (e);
 \draw[link] (crawl) -- (d);
 \draw[link] (filter) -- (m);

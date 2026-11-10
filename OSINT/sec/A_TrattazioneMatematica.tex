@@ -25,7 +25,7 @@ Se si ammettono tutte le lunghezze da \(1\) a \(L\), il dominio diventa
 \[
     \vert\Omega\vert = \sum_{\ell=1}^{L} N^\ell = \frac{N(N^L - 1)}{N - 1} \approx N^L \cdot \frac{N}{N-1},
 \]
-che per alfabeti realistici (insieme dei caratteri ammessi \(\geq 10\)) differisce da \(N^L\) per meno del \(12\%\). Questo significa che le password più corte contano poco, e \(N^L\) resta una buona approssimazione.
+che per alfabeti realistici (\(N \geq 10\) caratteri ammessi) differisce da \(N^L\) per meno del \(12\%\). Questo significa che le password più corte contano poco, e \(N^L\) resta una buona approssimazione.
 
 \paragraph{Entropia teorica.}
 Se l'utente sceglie la password in modo uniforme, cioè \(P(x) = 1/\vert\Omega\vert\) per ogni \(x \in \Omega\), l'entropia è
@@ -45,10 +45,10 @@ Se l'attaccante prova \(v\) password al secondo, il tempo necessario nel caso pe
 \begin{example}
     Con \(N = 94\) (caratteri stampabili) e \(L = 8\) si ha \(H = 8 \log_2 94 \approx 52{,}4\) bit, cioè circa \(6 \cdot 10^{15}\) password. Con \(v = 10^{10}\) tentativi al secondo servono \(T \approx 6 \cdot 10^{5}\) secondi, circa una settimana.
 \end{example}
-Poiché presuppone una scelta completamente casuale, \(T\) è un limite massimo al tempo di attacco: nessuna distribuzione su \(\Omega\) ha entropia maggiore.
+Nel caso peggiore servono sempre \(\vert\Omega\vert\) tentativi, qualunque sia la distribuzione. Il tempo \emph{atteso}, circa \(T/2\), è invece massimo quando la scelta è completamente casuale, perché nessuna distribuzione su \(\Omega\) ha entropia maggiore di quella uniforme: è quindi un limite massimo al tempo medio di attacco.
 
 \subsection{Modello reale}\label{app:ModelloReale}
-Le password reali non sono scelte in modo uniforme: i fattori di prevedibilità (parole di senso compiuto, schemi ricorrenti, dati personali, riuso) concentrano la probabilità su una piccola parte di \(\Omega\). La distribuzione delle probabilità di \(X\) è quindi generica.
+Le password reali non sono scelte in modo uniforme: i fattori di prevedibilità (parole di senso compiuto, schemi ricorrenti, dati personali, riuso) concentrano la probabilità su una piccola parte di \(\Omega\). La distribuzione delle probabilità di \(X\) quindi non è più uniforme e va considerata generica.
 
 \paragraph{Entropia di Shannon.}
 La quantità \(-\log_2 P(x)\) è detta \emph{autoinformazione} della password \(x\): vale pochi bit se \(x\) è molto probabile, molti se è rara. L'entropia di \(X\) ne è il valore atteso:
