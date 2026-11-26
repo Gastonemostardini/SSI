@@ -1,77 +1,79 @@
 \section{Il protocollo Signal: l'accordo delle chiavi}\label{sec:AccordoChiavi}
 
-\subsection{Il problema: comunicare con chi è offline}\label{sec:offline}
+\subsection{Comunicare con chi è offline}\label{sec:offline}
 
-Due utenti che iniziano una chat cifrata devono prima concordare una chiave segreta.
-Nella messaggistica, però, il destinatario spesso non è connesso. Signal risolve il
-problema con un server che conserva in anticipo alcune chiavi pubbliche del destinatario.
-Il protocollo permette di stabilire una chiave condivisa tra Alice e Bob, che si
-autenticano tramite chiavi pubbliche, anche mentre Bob è offline~\cite{x3dh,pqxdh}.
+Per cifrare una conversazione, due interlocutori devono prima condividere una chiave
+segreta, e in protocolli come TLS questa viene negoziata in tempo reale. Nella
+messaggistica, però, il destinatario spesso non è connesso. Signal risolve il problema
+introducendo un server in cui ciascun utente deposita in anticipo alcune chiavi
+pubbliche. Ogni chiave pubblica ha una corrispondente chiave privata, che non lascia
+mai il dispositivo. Alice può così stabilire una chiave condivisa con Bob anche se Bob
+è offline~\cite{x3dh,pqxdh}.
 
 \subsection{Le chiavi in gioco}\label{sec:chiavi}
 
-\begin{itemize}
-  \item \textbf{IK} (\emph{identity key}): chiave di identità a lungo termine di ciascun utente.
-  \item \textbf{SPK} (\emph{signed prekey}): prekey di Bob firmata con la sua IK e sostituita periodicamente.
-  \item \textbf{OPK} (\emph{one-time prekey}): prekey usate una sola volta.
-  \item \textbf{EK} (\emph{ephemeral key}): chiave effimera di Alice, generata nuova a ogni esecuzione.
-\end{itemize}
+Il protocollo usa quattro tipi di chiavi. La chiave
+di identità (IK) è a lungo termine e consente di riconoscere l'utente. La
+\emph{signed prekey} (SPK) è firmata digitalmente con la IK, così che se ne possa
+verificare la provenienza, e viene sostituita periodicamente. Le \emph{one-time prekey}
+(OPK) sono chiavi di scorta, ciascuna usata una sola volta. La chiave effimera (EK),
+infine, è generata da Alice a ogni esecuzione e poi scartata.
 
 \subsection{Il funzionamento}\label{sec:x3dh}
 
-Il protocollo si svolge in tre fasi~\cite{pqxdh}:
+Il protocollo, denominato X3DH (\emph{Extended Triple Diffie-Hellman}), si basa
+sullo scambio Diffie-Hellman (DH), che combinando la chiave privata di una parte con
+quella pubblica dell'altra produce lo stesso segreto su entrambi i lati, senza che
+questo transiti in rete~\cite{x3dh}.
 
-\begin{enumerate}
-  \item Bob pubblica sul server la sua IK, la SPK con la relativa firma e un lotto di OPK.
-  \item Alice scarica questo ``pacchetto'' di chiavi, verifica le firme e interrompe il
-  protocollo se una verifica fallisce. Poi calcola quattro scambi Diffie-Hellman:
-  \begin{align*}
-    DH_1 &= DH(IK_A, SPK_B)\\
-    DH_2 &= DH(EK_A, IK_B)\\
-    DH_3 &= DH(EK_A, SPK_B)\\
-    DH_4 &= DH(EK_A, OPK_B)
-  \end{align*}
-  La chiave di sessione è $SK = \mathrm{KDF}(DH_1 \,\|\, DH_2 \,\|\, DH_3 \,\|\, DH_4)$.
-  $DH_1$ e $DH_2$ legano la chiave alle identità di entrambi (autenticazione reciproca).
-  $DH_3$ e $DH_4$ usano chiavi temporanee, che garantiscono la \emph{forward secrecy}~\cite{x3dh}.
-  \item Bob riceve il primo messaggio, che contiene $IK_A$, $EK_A$ e gli identificativi
-  delle prekey usate. Ricalcola SK e cancella la chiave privata della OPK usata.
-\end{enumerate}
+Nella prima fase Bob pubblica sul server la propria IK, la SPK con la relativa firma
+e un lotto di OPK. Nella seconda Alice scarica queste chiavi, verifica la firma della
+SPK (se non è valida, il protocollo si interrompe) e calcola quattro scambi DH:
+\begin{align*}
+  DH_1 &= DH(IK_A, SPK_B) & DH_2 &= DH(EK_A, IK_B)\\
+  DH_3 &= DH(EK_A, SPK_B) & DH_4 &= DH(EK_A, OPK_B)
+\end{align*}
+Una funzione di derivazione (KDF) li combina in un'unica chiave di sessione
+$SK = \mathrm{KDF}(DH_1 \| DH_2 \| DH_3 \| DH_4)$.
+$DH_1$ e $DH_2$ usano le chiavi di identità e servono ad autenticare le due parti.
+$DH_3$ e $DH_4$ usano chiavi temporanee che vengono poi cancellate, per cui anche chi
+in futuro rubasse le chiavi di identità non potrebbe decifrare le sessioni passate
+(\emph{forward secrecy})~\cite{x3dh}. Nella terza fase Bob riceve il primo
+messaggio, contenente $IK_A$, $EK_A$ e gli identificativi delle prekey usate, ricalcola
+SK e cancella la OPK consumata~\cite{pqxdh}.
 
-Il protocollo offre anche la \emph{negabilità}: ciascuna parte potrebbe fabbricare una
-trascrizione della conversazione usando solo le proprie chiavi. Nessuno può quindi
-provare crittograficamente a terzi chi ha scritto cosa.
+Il protocollo garantisce inoltre la \emph{negabilità}. I messaggi non vengono firmati,
+ma autenticati con la chiave di sessione, che conoscono sia Alice sia Bob. Bob quindi
+non può dimostrare a terzi che un messaggio l'ha scritto Alice, perché avrebbe potuto
+scriverlo lui stesso.
 
-\subsection{Quanto ci si fida del server?}\label{sec:server}
+\subsection{Il ruolo del server}\label{sec:server}
 
-Il server non può calcolare SK, ma non è del tutto innocuo. Può trattenere le one-time
-prekey, riducendo la forward secrecy. Quando le OPK finiscono, il termine $DH_4$ viene
-omesso e la forward secrecy dipende dalla durata della SPK. Soprattutto, potrebbe
-sostituire le chiavi pubbliche di un utente. Per questo gli utenti devono confrontare
-le chiavi di identità tramite un canale esterno, per esempio impronte o QR code; senza
-questa verifica non c'è garanzia su chi si trovi dall'altra parte
-(vedi \cref{sec:ScambioMessaggi}).
+Il server non può calcolare SK, ma può comunque interferire. Se trattenesse le OPK, la
+forward secrecy dipenderebbe soltanto dalla durata della SPK. Più grave è il caso in
+cui sostituisca le chiavi pubbliche di un utente, realizzando un attacco
+\emph{man-in-the-middle}. Per escluderlo, gli utenti devono confrontare le chiavi di
+identità tramite un canale esterno, come impronte numeriche o QR code; senza questa
+verifica non vi è garanzia sull'identità dell'interlocutore (\cref{sec:ScambioMessaggi}).
 
 \subsection{La minaccia quantistica: PQXDH}\label{sec:pqxdh}
 
-Un computer quantistico potrebbe in futuro rompere Diffie-Hellman su curve ellittiche.
-Un attaccante potrebbe quindi registrare oggi il traffico cifrato e decifrarlo in
-seguito (\emph{harvest now, decrypt later}). Nel settembre 2023 Signal ha annunciato
-PQXDH~\cite{signalpqblog}. Lo schema è ibrido: affianca a X25519 il meccanismo
-post-quantistico Kyber-1024. Il segreto ottenuto dal KEM entra nella derivazione di SK
-insieme ai quattro DH.
+Un calcolatore quantistico abbastanza potente potrebbe rompere DH. Chi registra oggi
+il traffico cifrato potrebbe quindi decifrarlo in futuro (\emph{harvest now, decrypt
+later}). Per questo nel 2023 Signal ha introdotto PQXDH~\cite{signalpqblog}, che
+affianca a DH un meccanismo post-quantistico chiamato Kyber. Il segreto prodotto da
+Kyber viene usato insieme ai DH per derivare SK, così un attaccante dovrebbe rompere
+entrambi.
 
-La protezione però è parziale: l'autenticazione reciproca si basa ancora sulla
-difficoltà del logaritmo discreto. Contro un attaccante quantistico attivo PQXDH non
-offre protezione: potrebbe rompere firme e DH e impersonare gli utenti. Inoltre
-un'analisi formale indipendente ha individuato alcune imprecisioni nella specifica,
-poi corretta da Signal in una nuova versione~\cite{cryspenpqxdh}.
+La protezione è però parziale, perché l'autenticazione resta vulnerabile al calcolo
+quantistico: un attaccante attivo potrebbe impersonare gli utenti. Un'analisi formale
+indipendente ha inoltre individuato alcune imprecisioni nella specifica, poi corrette da Signal in una nuova
+versione~\cite{cryspenpqxdh}.
 
 \subsection{L'adozione in WhatsApp}\label{sec:whatsapp}
 
-WhatsApp usa il protocollo Signal per messaggi e chiamate dei client rilasciati dopo
-il 31 marzo 2016. Al momento della registrazione, il client invia al server la propria
-identity key, la signed prekey con la firma e un lotto di one-time prekey, come nello
-schema descritto sopra~\cite{whatsappwhitepaper}. Il protocollo di Signal è però open
-source e analizzato formalmente, mentre il client di WhatsApp è proprietario. Che
-l'implementazione rispetti il white paper va quindi in buona parte preso sulla fiducia.
+Dal 2016 WhatsApp adotta il protocollo Signal per messaggi e chiamate. Al momento della
+registrazione, il client invia al server IK, SPK con firma e un lotto di OPK, secondo lo
+schema appena descritto~\cite{whatsappwhitepaper}. Il codice di WhatsApp però non è
+pubblico, quindi non si può verificare che l'app faccia davvero quello che descrive il
+white paper.
